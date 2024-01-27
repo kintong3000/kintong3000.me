@@ -8,9 +8,7 @@
 
     </div>
     <div class=""
-    style="height: 2000px">
-
-
+         style="height: 2000px">
 
     </div>
   </div>
@@ -18,9 +16,9 @@
 </template>
 
 <style scoped>
-.test{
+.test {
   position: absolute;
-  background-image:var(--test);
+  background-image: var(--test);
   border-radius: 50%;
   width: 192px;
   height: 192px;

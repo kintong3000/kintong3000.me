@@ -19,9 +19,9 @@
           <div class="divider"></div>
 
           <a href="github.com">
-<!--            <skill-icons-github-light />-->
-            <skill-icons-github-light v-if="isDark" />
-            <skill-icons-github-dark v-if="!isDark" />
+
+            <skill-icons-github-dark  class="icon1"  />
+            <skill-icons-github-light class="icon2"  />
           </a>
           <div class="divider"></div>
 
@@ -121,6 +121,11 @@ onBeforeUnmount(() => {
     //border-bottom-color: #545454;
   }
 }
-
+html:not(.dark) .icon2{
+  display: none;
+           }
+.dark .icon1{
+  display: none;
+           }
 
 </style>
