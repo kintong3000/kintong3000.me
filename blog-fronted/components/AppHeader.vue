@@ -3,7 +3,7 @@
 
     <nav class="h-16">
       <div class="nav h-16" :class="{ top: isTop }">
-        <router-link class="w-12 h-12  m-5 select-none outline-none pt-1" to="/">
+        <router-link class="w-12 h-12  m-5 select-none outline-none pt-1" to="/" title="back to home">
           <!--        <router-link class="w-12 h-12 absolute xl:fixed m-5 select-none outline-none" to="/">-->
           <logo/>
         </router-link>
@@ -18,10 +18,13 @@
           </router-link>
           <div class="divider"></div>
 
-          <a href="github.com">
-
-            <skill-icons-github-dark  class="icon1"  />
-            <skill-icons-github-light class="icon2"  />
+          <a href="https://github.com/kintong3000" title="Github">
+            <IconsSkillIconsGithubDark class="icon1"/>
+            <IconsSkillIconsGithubLight class="icon2"/>
+          </a>
+          <div class="divider"></div>
+          <a href="discordapp.com/users/kintong#5614" title="Discord">
+            <IconsSkillIconsDiscord/>
           </a>
           <div class="divider"></div>
 
@@ -35,8 +38,6 @@
 </template>
 
 <script lang="ts" setup>
-import SkillIconsGithubLight from "~/components/icons/SkillIconsGithubLight.vue";
-import SkillIconsGithubDark from "~/components/icons/SkillIconsGithubDark.vue";
 
 const isTop = ref(true)
 const isDark = useDark()
@@ -121,11 +122,13 @@ onBeforeUnmount(() => {
     //border-bottom-color: #545454;
   }
 }
-html:not(.dark) .icon2{
+
+html:not(.dark) .icon2 {
   display: none;
-           }
-.dark .icon1{
+}
+
+.dark .icon1 {
   display: none;
-           }
+}
 
 </style>
