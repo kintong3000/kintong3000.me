@@ -19,7 +19,9 @@
           <div class="divider"></div>
 
           <a href="github.com">
-            <skill-icons-github-light />
+<!--            <skill-icons-github-light />-->
+            <skill-icons-github-light v-if="isDark" />
+            <skill-icons-github-dark v-if="!isDark" />
           </a>
           <div class="divider"></div>
 
@@ -34,9 +36,10 @@
 
 <script lang="ts" setup>
 import SkillIconsGithubLight from "~/components/icons/SkillIconsGithubLight.vue";
+import SkillIconsGithubDark from "~/components/icons/SkillIconsGithubDark.vue";
 
 const isTop = ref(true)
-
+const isDark = useDark()
 const handleScroll = () => {
   // 判断滚动条位置
   isTop.value = window.scrollY === 0
