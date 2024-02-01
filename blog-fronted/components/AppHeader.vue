@@ -3,7 +3,7 @@
 
     <nav class="h-16">
       <div class="nav h-16" :class="{ top: isTop }">
-        <router-link class="w-12 h-12  m-5 select-none outline-none pt-1" to="/" title="back to home">
+        <router-link class="w-12 h-12  m-5 select-none outline-none pt-1 logo" to="/" title="back to home">
           <!--        <router-link class="w-12 h-12 absolute xl:fixed m-5 select-none outline-none" to="/">-->
           <logo/>
         </router-link>
@@ -58,7 +58,9 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-
+.nav .logo{
+  opacity: 1;
+}
 .divider {
   margin-right: 8px;
   margin-left: 8px;

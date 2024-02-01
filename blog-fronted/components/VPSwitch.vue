@@ -9,6 +9,7 @@
 </template>
 
 <style scoped>
+
 .VPSwitch {
   position: relative;
   border-radius: 11px;

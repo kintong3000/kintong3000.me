@@ -2,10 +2,14 @@
 export default defineNuxtConfig({
   // ssr: false,
   devtools: { enabled: true },
-  css: ['~/assets/styles/main.css','~/assets/styles/rainbow.css'],
+  css: [
+    '~/assets/styles/main.css',
+    '~/assets/styles/rainbow.css',
+    '@unocss/reset/tailwind.css'
+  ],
 
   modules: [
-    '@nuxtjs/tailwindcss',
+    // '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
     '@unocss/nuxt',
     '@vueuse/nuxt',

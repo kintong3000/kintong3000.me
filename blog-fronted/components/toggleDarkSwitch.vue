@@ -57,6 +57,7 @@ const switchTitle = computed(() => {
 </template>
 
 <style scoped>
+
 .sun {
   opacity: 1;
 }

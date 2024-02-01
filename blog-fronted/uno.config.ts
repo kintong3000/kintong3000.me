@@ -2,11 +2,18 @@
 import { defineConfig } from 'unocss'
 import presetWind from '@unocss/preset-wind'
 import presetIcons from '@unocss/preset-icons'
-
+import {
+    presetAttributify,
+    presetTypography,
+    presetUno
+} from 'unocss'
 
 export default defineConfig({
     presets: [
         presetWind(),
-        presetIcons()
+        presetIcons(),
+        presetAttributify(), // 使用attribute模式时必须
+        presetUno(), // 必须
+        presetTypography()
     ],
 })
