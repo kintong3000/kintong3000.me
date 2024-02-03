@@ -1,0 +1,43 @@
+
+.table-of-contents {
+    position: fixed;
+    top: 90px;
+    bottom: 0;
+    font-size: 0.8em;
+    left: 20px;
+    z-index: 200;
+    overflow: hidden;
+    --uno: hidden lg-flex flex-col w-100px lg-w-200px xl-w-300px;
+}
+
+.table-of-contents-anchor {
+    --uno: mx2  text-lg flex items-center;
+    padding-left:0.5em;
+}
+
+.table-of-contents > ul {
+    text-overflow: ellipsis;
+    height: 100%;
+    overflow-y: auto;
+    --uno: rounded op0 mt-1 pb-5 transition duration-700 list-none no-underline	;
+}
+
+
+
+ .table-of-contents:hover > ul {
+    opacity: 0.75;
+}
+
+
+.table-of-contents ul > li {
+    /*padding-left: 0.8rem;*/
+    line-height: 1.5em;
+    margin-top: 0.5em;
+    --uno: list-none;
+}
+
+.table-of-contents ul > li > a {
+    --uno: op75 hover-op100 transition;
+}
+
+

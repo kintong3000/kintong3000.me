@@ -5,7 +5,8 @@ import presetIcons from '@unocss/preset-icons'
 import {
     presetAttributify,
     presetTypography,
-    presetUno
+    presetUno,
+    transformerDirectives
 } from 'unocss'
 
 export default defineConfig({
@@ -16,4 +17,7 @@ export default defineConfig({
         presetUno(), // 必须
         presetTypography()
     ],
+    transformers: [
+        transformerDirectives(),
+    ]
 })
