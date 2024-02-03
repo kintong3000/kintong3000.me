@@ -6,18 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2c472497-3c5b-4599-8567-2c6ec74f00a5" name="Changes" comment="backup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-fronted/app.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-fronted/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/app.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog-fronted/assets/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/assets/styles/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-fronted/components/AppFooter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/components/AppFooter.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-fronted/components/AppHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/components/AppHeader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-fronted/components/logo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/components/logo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-fronted/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/layouts/default.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-fronted/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/nuxt.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-fronted/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog-fronted/pages/blog/[articlePublishedTime]/[title].vue" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/pages/blog/[articlePublishedTime]/[title].vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-fronted/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-fronted/uno.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/uno.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +128,7 @@
       <workItem from="1706337076321" duration="91000" />
       <workItem from="1706337260128" duration="169000" />
       <workItem from="1706337437958" duration="8957000" />
-      <workItem from="1706421793083" duration="37591000" />
+      <workItem from="1706421793083" duration="46306000" />
     </task>
     <task id="LOCAL-00001" summary="backup">
       <option name="closed" value="true" />
@@ -180,7 +170,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706777779484</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="backup">
+      <option name="closed" value="true" />
+      <created>1706946044968</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1706946044968</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

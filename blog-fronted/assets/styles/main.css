@@ -9,7 +9,7 @@ html.dark .shiki span {
 }
 
 :root {
-    --c-bg: #FFFFFF;
+    --c-bg: #ffffff;
     --c-scrollbar: #bbb;
     --c-scrollbar-hover: #949494;
 }
@@ -282,3 +282,20 @@ html:not(.dark) [img-dark] {
 }
 
 
+.vp-adaptive-theme {
+    position: relative;
+}
+
+.lang{
+    position: absolute;
+    right:0.5em;
+    top:0.5em;
+    --uno: text-xs font-sans
+
+}
+
+
+.vp-adaptive-theme:hover .lang{
+    opacity: 0;
+    transition: 0.5s;
+}
