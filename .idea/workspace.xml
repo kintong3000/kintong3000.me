@@ -7,8 +7,9 @@
     <list default="true" id="2c472497-3c5b-4599-8567-2c6ec74f00a5" name="Changes" comment="backup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog-fronted/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/app.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-fronted/assets/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/assets/styles/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-fronted/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog-fronted/pages/blog/[articlePublishedTime]/[title].vue" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/pages/blog/[articlePublishedTime]/[title].vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-fronted/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +130,7 @@
       <workItem from="1706337076321" duration="91000" />
       <workItem from="1706337260128" duration="169000" />
       <workItem from="1706337437958" duration="8957000" />
-      <workItem from="1706421793083" duration="63730000" />
+      <workItem from="1706421793083" duration="66723000" />
     </task>
     <task id="LOCAL-00001" summary="backup">
       <option name="closed" value="true" />
@@ -211,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707052473355</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="backup">
+      <option name="closed" value="true" />
+      <created>1707054529077</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1707054529077</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1,7 +1,9 @@
 <template>
   <div class="font-sans text-gray-700 dark:text-gray-200 ">
     <NuxtLayout >
-      <NuxtPage class="px-7 py-10 m-auto of-x-hidden"/>
+      <main class="px-7 py-10 m-auto of-x-hidden">
+        <NuxtPage />
+      </main>
     </NuxtLayout>
   </div>
 </template>

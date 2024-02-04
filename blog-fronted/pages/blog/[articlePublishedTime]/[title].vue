@@ -1,4 +1,3 @@
-
 <script setup lang="ts">
 // @ts-expect-error missing types
 import MarkdownIt from 'markdown-it'
@@ -14,13 +13,17 @@ import 'markdown-it-github-alerts/styles/github-colors-light.css'
 import 'markdown-it-github-alerts/styles/github-colors-dark-class.css'
 import 'markdown-it-github-alerts/styles/github-base.css'
 
-import { preWrapperPlugin } from '@/assets/preWrapper'
+import { preWrapperPlugin } from '~/composables/preWrapper'
+import  testmd from '~/composables/test-md'
+import matter from 'gray-matter';
+
+
 const md = new MarkdownIt()
 
 md.use(await Shiki({
   themes: {
-    light: 'solarized-light',
-    dark: 'github-dark',
+    light: 'rose-pine-dawn',
+    dark: 'vitesse-dark',
   }
 
 }))
@@ -34,23 +37,53 @@ md.use(MarkdownItGitHubAlerts)
 md.use(preWrapperPlugin,false)
 const route = useRoute()
 
-const {data} = await useFetch(`https://dev.usemock.com/65bdf10d6309cc7a3772327b/${route.params.articlePublishedTime}/${route.params.title}`, {
-  method:"GET",
-})
-var damn = data.value.data.content
-const result = md.render(damn)
+// const {data} = await useFetch(`https://dev.usemock.com/65bdf10d6309cc7a3772327b/${route.params.articlePublishedTime}/${route.params.title}`, {
+//   method:"GET",
+// })
+// var damn = data.value.data.content
+const result = matter(testmd)
+const frontmatter = result.data
+const content = result.content
+const contentHtml = md.render(content)
 
 </script>
 
 <template>
 
-  <div class="prose px-7 py-10 m-auto of-x-hidden ">
-    <div class="">
-      <h1>blog</h1>
+  <div class="prose prose-coolgray dark:prose-invert m-auto slide-enter-content">
+    <div
+        v-if="frontmatter.display ?? frontmatter.title"
+        class="prose m-auto mb-8"
+        :class="[frontmatter.wrapperClass]"
+    >
+      <h1 class="mb-0 slide-enter-50">
+        {{ frontmatter.display ?? frontmatter.title }}
+      </h1>
+      <p
+          v-if="frontmatter.date"
+          class="opacity-50 !-mt-6 slide-enter-50"
+      >
+        {{ formatDate(frontmatter.date, false) }} <span v-if="frontmatter.duration">· {{ frontmatter.duration }}</span>
+      </p>
+      <p v-if="frontmatter.place" class="mt--4!">
+        <span op50>at </span>
+        <a v-if="frontmatter.placeLink" :href="frontmatter.placeLink" target="_blank">
+          {{ frontmatter.place }}
+        </a>
+        <span v-else font-bold>
+        {{ frontmatter.place }}
+      </span>
+      </p>
+      <p
+          v-if="frontmatter.subtitle"
+          class="opacity-50 !-mt-6 italic slide-enter"
+      >
+        {{ frontmatter.subtitle }}
+      </p>
+
     </div>
-<!--    <div>data:{{data.data.content}}</div>-->
     <article class="text-base ">
-      <div v-html="result"></div>
+      <div class="slide-enter-content" v-html="contentHtml"></div>
 
     </article>
 

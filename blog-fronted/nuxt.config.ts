@@ -1,5 +1,22 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import NodeGlobalsPolyfillPlugin from "@esbuild-plugins/node-globals-polyfill";
 export default defineNuxtConfig({
+    vite:{
+        optimizeDeps: {
+            esbuildOptions: {
+                // Node.js global to browser globalThis
+                define: {
+                    global: 'globalThis'
+                },
+                // Enable esbuild polyfill plugins
+                plugins: [
+                    NodeGlobalsPolyfillPlugin({
+                        buffer: true
+                    })
+                ]
+            }
+        }
+    },
 
     // ssr: false,
     devtools: {enabled: true},
