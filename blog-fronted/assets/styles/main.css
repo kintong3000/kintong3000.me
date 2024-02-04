@@ -1,13 +1,16 @@
 html.dark .shiki,
 html.dark .shiki span {
     color: var(--shiki-dark) !important;
-    background-color: var(--shiki-dark-bg) !important;
+    background-color: var(--my-code-dark-bg) !important;
     /* 可选，用于定义字体样式 */
     font-style: var(--shiki-dark-font-style) !important;
     font-weight: var(--shiki-dark-font-weight) !important;
     text-decoration: var(--shiki-dark-text-decoration) !important;
 }
 
+:root{
+    --my-code-dark-bg:#161619
+}
 :root {
     --c-bg: #ffffff;
     --c-scrollbar: #bbb;
@@ -36,7 +39,8 @@ html {
 }
 
 html.dark {
-    --c-bg: #201c1c;
+    /*--c-bg: #201c1c;*/
+    --c-bg: #1B1B1F;
     --c-scrollbar: #111;
     --c-scrollbar-hover: #222;
 
@@ -282,20 +286,17 @@ html:not(.dark) [img-dark] {
 }
 
 
-.vp-adaptive-theme {
-    position: relative;
+
+html.dark .prose {
+    --fg: #bbb;
+    --fg-deep: #ddd;
+    --fg-deeper: #fff;
 }
 
-.lang{
-    position: absolute;
-    right:0.5em;
-    top:0.5em;
-    --uno: text-xs font-sans
+.prose {
+    --fg: #555;
+    --fg-deep: #222;
+    --fg-deeper: #000;
 
-}
-
-
-.vp-adaptive-theme:hover .lang{
-    opacity: 0;
-    transition: 0.5s;
+    color: var(--fg);
 }
