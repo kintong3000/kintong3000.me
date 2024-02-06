@@ -1,51 +1,62 @@
 <script setup lang="ts">
-// @ts-expect-error missing types
-import MarkdownIt from 'markdown-it'
+import {fakeArticleList} from "~/composables/fakeData";
+import type {Post} from "~/types";
 
-import Shiki from '@shikijs/markdown-it'
-import anchor from 'markdown-it-anchor'
+const articleList = fakeArticleList
+const getYear = (a: Date | string | number) => new Date(a).getFullYear()
+const isSameYear = (a?: Date | string | number, b?: Date | string | number) => a && b && getYear(a) === getYear(b)
 
-// @ts-expect-error missing types
-import TOC from 'markdown-it-table-of-contents'
-import MarkdownItGitHubAlerts from 'markdown-it-github-alerts'
+function isSameGroup(a: Post, b?: Post) {
+  return isSameYear(a.date, b?.date)
+}
 
-import 'markdown-it-github-alerts/styles/github-colors-light.css'
-import 'markdown-it-github-alerts/styles/github-colors-dark-class.css'
-import 'markdown-it-github-alerts/styles/github-base.css'
+function getGroupName(p: Post) {
 
-const md = new MarkdownIt()
+  return getYear(p.date)
+}
 
-md.use(await Shiki({
-  themes: {
-    light: 'solarized-light',
-    dark: 'github-dark',
-  }
-
-}))
-
-md.use(TOC,{
-  includeLevel: [1, 2, 3, 4],
-  containerHeaderHtml: '<div class="table-of-contents-anchor"><div class="i-material-symbols:content-paste-sharp w-1em h-1em"></div>Contents</div>'
-})
-md.use(anchor)
-md.use(MarkdownItGitHubAlerts)
-
-
-
+function getBlogUrl(p: Post) {
+  return p.url
+}
 </script>
 
 <template>
+  <div class="m-auto max-w-prose		">
 
-  <div class="prose  ">
-    <div class="">
-      <h1>blog</h1>
-    </div>
-<!--<div>{{result}}</div>-->
-    <article class="text-base ">
-      <div v-html="result"></div>
+    <div class="text-6xl font-sans	font-bold	text-center	mb-10 slide-enter">Blog</div>
+    <ul>
+      <div v-for="article in articleList">
+        <div
+            v-if="!isSameGroup(article, articleList[article.id - 2])"
+            select-none relative h20 pointer-events-none slide-enter
+            :style="{
+          '--enter-stage': article.id - 3,
+          '--enter-step': '60ms',
+        }"
+        >
+          <span text-8em color-transparent absolute left--3rem top--2rem font-bold text-stroke-2 text-stroke-hex-aaa
+                op10>{{ getGroupName(article) }}</span>
+        </div>
+        <div class="slide-enter"  :style="{
+          '--enter-stage': article.id,
+          '--enter-step': '60ms',
+        }">
+        <router-link to="getBlogUrl(article)" class="item block font-normal mb-6 mt-2 no-underline "
 
-    </article>
-
+        >
+          <li class="no-underline" flex="~ col md:row gap-2 md:items-center">
+            <div class="title text-lg leading-1.2em" flex="~ gap-2 wrap">
+              <span align-middle>{{ article.title }}</span>
+            </div>
+            <div flex="~ gap-2 items-center">
+              <span text-sm op50 ws-nowrap>
+                {{ formatDate(article.createTime, true) }}
+              </span>
+            </div>
+          </li>
+        </router-link></div>
+      </div>
+    </ul>
   </div>
 </template>
 

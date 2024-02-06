@@ -14,7 +14,7 @@ import 'markdown-it-github-alerts/styles/github-colors-dark-class.css'
 import 'markdown-it-github-alerts/styles/github-base.css'
 
 import { preWrapperPlugin } from '~/composables/preWrapper'
-import  testmd from '~/composables/test-md'
+import  {fakemd} from '~/composables/fakeData'
 import matter from 'gray-matter';
 
 
@@ -41,7 +41,7 @@ const route = useRoute()
 //   method:"GET",
 // })
 // var damn = data.value.data.content
-const result = matter(testmd)
+const result = matter(fakemd)
 const frontmatter = result.data
 const content = result.content
 const contentHtml = md.render(content)

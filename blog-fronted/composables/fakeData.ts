@@ -1,4 +1,4 @@
-const md = '---\n' +
+const fakemd = '---\n' +
     'title: Refining AI Generated QR Code\n' +
     'date: 2023-06-30T17:00:00.000+00:00\n' +
     'lang: en\n' +
@@ -6,6 +6,7 @@ const md = '---\n' +
     '---'+'\n' +
 '[[toc]]\n' +
 '\n' +
+    '![image-20231202162018893](https://cdn.jsdelivr.net/gh/kintong3000/Kintong-Image-Hosting@main/img/image-20231202162018893.png)'+
 '> **Update**: New blog posts\n' +
 '>\n' +
 '> - [👉 **Refining AI Generated QR Code**](/posts/ai-qrcode-refine)\n' +
@@ -180,4 +181,58 @@ const md = '---\n' +
 '- [(Chinese) Use AI to genereate scannable images](https://mp.weixin.qq.com/s/i4WR5ULH1ZZYl8Watf3EPw) - Unfortunately the article is in Chinese and I didn\'t find a English version of it.\n' +
 '- [Upscale Images With Stable Diffusion](https://easywithai.com/guide/how-to-use-upscalers-in-stable-diffusion/) - Enlarge the image while adding more details\n'
 
-export default md;
+
+
+const fakeArticleList = [{
+    "id":1,
+    "title": "Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world",
+    "date": "2023-06-06 11:10:30",
+    "url":"test/test"
+},{
+    "id":2,
+    "title": "Hello world",
+    "date": "2023-06-06 11:10:30",
+    "url":"test/test"
+},{
+    "id":3,
+    "title": "Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world",
+    "date": "2023-06-06 11:10:30",
+    "url":"test/test"
+},{
+    "id":4,
+    "title": "Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world",
+    "date": "2023-06-06 11:10:30",
+    "url":"test/test"
+},{
+    "id":5,
+    "title": "Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world",
+    "date": "2023-06-06 11:10:30",
+    "url":"test/test"
+},{
+    "id":6,
+    "title": "Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world",
+    "date": "2023-06-06 11:10:30",
+    "url":"test/test"
+},{
+    "id":7,
+    "title": "Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world",
+    "date": "2023-06-06 11:10:30",
+    "url":"test/test"
+},{
+    "id":8,
+    "title": "Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world",
+    "date": "2023-06-06 11:10:30",
+    "url":"test/test"
+},{
+    "id":9,
+    "title": "Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world",
+    "date": "2023-06-06 11:10:30",
+    "url":"test/test"
+},{
+    "id":10,
+    "title": "你好你好你好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你好  Hello world Hello world Hello world",
+    "date": "2022-06-06 11:10:30",
+    "url":"test/test"
+},
+]
+export {fakemd,fakeArticleList};

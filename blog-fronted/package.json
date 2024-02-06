@@ -18,7 +18,7 @@
     "@unocss/preset-typography": "^0.58.4",
     "@unocss/preset-wind": "^0.58.3",
     "element-plus": "^2.4.4",
-    "nuxt": "^3.9.3",
+    "nuxt": "^3.10.1",
     "sass": "^1.70.0",
     "vue": "^3.4.6",
     "vue-router": "^4.2.5"

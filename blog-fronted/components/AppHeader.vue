@@ -13,7 +13,7 @@
           <router-link to="/blog">
             Blog
           </router-link>
-          <router-link to="/blog">
+          <router-link to="/projects">
             Projects
           </router-link>
           <div class="divider"></div>
@@ -23,8 +23,12 @@
             <IconsSkillIconsGithubLight class="icon2"/>
           </a>
           <div class="divider"></div>
-          <a href="discordapp.com/users/kintong#5614" title="Discord">
-            <IconsSkillIconsDiscord/>
+<!--          <a href="https://discordapp.com/users/kintong#5614" title="Discord">-->
+<!--            <IconsSkillIconsDiscord/>-->
+<!--          </a>-->
+<!--          <div class="divider"></div>-->
+          <a href="https://t.me/kintong3000" title="Discord">
+            <IconsLogosTelegram/>
           </a>
           <div class="divider"></div>
 
