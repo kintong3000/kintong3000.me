@@ -52,34 +52,35 @@ const contentHtml = md.render(content)
 
   <div class="prose prose-coolgray dark:prose-invert m-auto slide-enter-content">
     <div
-        v-if="frontmatter.display ?? frontmatter.title"
+        v-if=" frontmatter.title"
         class="prose m-auto mb-8"
         :class="[frontmatter.wrapperClass]"
     >
       <h1 class="mb-0 slide-enter-50">
-        {{ frontmatter.display ?? frontmatter.title }}
+        {{ frontmatter.title }}
       </h1>
       <p
           v-if="frontmatter.date"
           class="opacity-50 !-mt-6 slide-enter-50"
       >
-        {{ formatDate(frontmatter.date, false) }} <span v-if="frontmatter.duration">· {{ frontmatter.duration }}</span>
+        {{ formatDate(frontmatter.date, false) }}
+<!--        <span v-if="frontmatter.duration">· {{ frontmatter.duration }}</span>-->
       </p>
-      <p v-if="frontmatter.place" class="mt--4!">
-        <span op50>at </span>
-        <a v-if="frontmatter.placeLink" :href="frontmatter.placeLink" target="_blank">
-          {{ frontmatter.place }}
-        </a>
-        <span v-else font-bold>
-        {{ frontmatter.place }}
-      </span>
-      </p>
-      <p
-          v-if="frontmatter.subtitle"
-          class="opacity-50 !-mt-6 italic slide-enter"
-      >
-        {{ frontmatter.subtitle }}
-      </p>
+<!--      <p v-if="frontmatter.place" class="mt&#45;&#45;4!">-->
+<!--        <span op50>at </span>-->
+<!--        <a v-if="frontmatter.placeLink" :href="frontmatter.placeLink" target="_blank">-->
+<!--          {{ frontmatter.place }}-->
+<!--        </a>-->
+<!--        <span v-else font-bold>-->
+<!--        {{ frontmatter.place }}-->
+<!--      </span>-->
+<!--      </p>-->
+<!--      <p-->
+<!--          v-if="frontmatter.subtitle"-->
+<!--          class="opacity-50 !-mt-6 italic slide-enter"-->
+<!--      >-->
+<!--        {{ frontmatter.subtitle }}-->
+<!--      </p>-->
 
     </div>
     <article class="text-base ">
@@ -88,6 +89,7 @@ const contentHtml = md.render(content)
     </article>
 
   </div>
+  <AppFooter/>
 
   <div class="p-16">{{ $route.params.articlePublishedTime }} - {{ $route.params.title }}</div>
 </template>

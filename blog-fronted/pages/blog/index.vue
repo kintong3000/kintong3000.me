@@ -16,7 +16,7 @@ function getGroupName(p: Post) {
 }
 
 function getBlogUrl(p: Post) {
-  return p.url
+  return 'blog/'+p.name
 }
 </script>
 
@@ -41,7 +41,7 @@ function getBlogUrl(p: Post) {
           '--enter-stage': article.id,
           '--enter-step': '60ms',
         }">
-        <router-link to="getBlogUrl(article)" class="item block font-normal mb-6 mt-2 no-underline "
+        <router-link :to="getBlogUrl(article)" class="item block font-normal mb-6 mt-2 no-underline "
 
         >
           <li class="no-underline" flex="~ col md:row gap-2 md:items-center">

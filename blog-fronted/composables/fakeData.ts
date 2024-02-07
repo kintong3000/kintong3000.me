@@ -187,52 +187,57 @@ const fakeArticleList = [{
     "id":1,
     "title": "Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world",
     "date": "2023-06-06 11:10:30",
-    "url":"test/test"
+    "name":"test/test"
 },{
     "id":2,
     "title": "Hello world",
     "date": "2023-06-06 11:10:30",
-    "url":"test/test"
+    "name":"test/test"
 },{
     "id":3,
     "title": "Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world",
     "date": "2023-06-06 11:10:30",
-    "url":"test/test"
+    "name":"test/test"
 },{
     "id":4,
     "title": "Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world",
     "date": "2023-06-06 11:10:30",
-    "url":"test/test"
+    "name":"test/test"
 },{
     "id":5,
     "title": "Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world",
     "date": "2023-06-06 11:10:30",
-    "url":"test/test"
+    "name":"test/test"
 },{
     "id":6,
     "title": "Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world",
     "date": "2023-06-06 11:10:30",
-    "url":"test/test"
+    "name":"test/test"
 },{
     "id":7,
     "title": "Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world",
     "date": "2023-06-06 11:10:30",
-    "url":"test/test"
+    "name":"test/test"
 },{
     "id":8,
     "title": "Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world",
     "date": "2023-06-06 11:10:30",
-    "url":"test/test"
+    "name":"test/test"
 },{
     "id":9,
     "title": "Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world Hello world Hello world  Hello world Hello world Hello world",
     "date": "2023-06-06 11:10:30",
-    "url":"test/test"
+    "name":"test/test"
 },{
     "id":10,
     "title": "你好你好你好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你 好你好你好  Hello world Hello world Hello world",
     "date": "2022-06-06 11:10:30",
-    "url":"test/test"
+    "name":"test/test"
 },
 ]
-export {fakemd,fakeArticleList};
+const introduction = '---\n' +
+    'title: Kintong Cheung\n' +
+    '---'+'\n' +
+    'Hi there!  '+'I am kintong.\n\n'+
+    'Here is my personal blog.  '+'\n'+'I hope you got something out of it.'
+export {fakemd,fakeArticleList,introduction};
