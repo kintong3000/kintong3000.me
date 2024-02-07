@@ -16,7 +16,7 @@ import 'markdown-it-github-alerts/styles/github-base.css'
 import {preWrapperPlugin} from '~/composables/preWrapper'
 import {introduction} from '~/composables/fakeData'
 import matter from 'gray-matter';
-
+import config from '~/config/fetchConfig'
 
 const md = new MarkdownIt()
 
@@ -34,11 +34,13 @@ md.use(MarkdownItGitHubAlerts)
 md.use(preWrapperPlugin, false)
 const route = useRoute()
 
-// const {data} = await useFetch(`https://dev.usemock.com/65bdf10d6309cc7a3772327b/${route.params.articlePublishedTime}/${route.params.title}`, {
-//   method:"GET",
-// })
-// var damn = data.value.data.content
-const result = matter(introduction)
+const {data} = await useFetch(`introduction`, {
+  method:"GET",
+  baseURL:config.api,
+})
+
+// const result = matter(introduction)
+const result = matter(data.value.data.content)
 const frontmatter = result.data
 const content = result.content
 const contentHtml = md.render(content)

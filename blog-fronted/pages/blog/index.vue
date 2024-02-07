@@ -1,8 +1,15 @@
 <script setup lang="ts">
 import {fakeArticleList} from "~/composables/fakeData";
 import type {Post} from "~/types";
+import config from "~/config/fetchConfig"
 
-const articleList = fakeArticleList
+// const articleList = fakeArticleList
+const {data} = await useFetch(`bloglist`, {
+  method:"GET",
+  baseURL:config.api,
+})
+
+const articleList = data.value.data.articleList
 const getYear = (a: Date | string | number) => new Date(a).getFullYear()
 const isSameYear = (a?: Date | string | number, b?: Date | string | number) => a && b && getYear(a) === getYear(b)
 
