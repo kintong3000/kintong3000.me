@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/KT-blog.iml" filepath="$PROJECT_DIR$/KT-blog.iml" />
       <module fileurl="file://$PROJECT_DIR$/blog-fronted.iml" filepath="$PROJECT_DIR$/blog-fronted.iml" />
-      <module fileurl="file://$PROJECT_DIR$/test.iml" filepath="$PROJECT_DIR$/test.iml" />
     </modules>
   </component>
 </project>
