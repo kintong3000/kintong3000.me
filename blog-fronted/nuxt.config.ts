@@ -43,9 +43,9 @@ export default defineNuxtConfig({
 
     // ssr: false,
     routeRules: {
-        '/': {isr: 3600},
-        '/blog/**': {isr: 3600},
-        '/blog': {isr: 3600},
+        '/': {isr: 60},
+        '/blog/**': {isr: 60},
+        '/blog': {isr: 60},
 
 
     },
@@ -69,3 +69,7 @@ export default defineNuxtConfig({
     ],
     // elementPlus: { /** Options */ }
 })
+// function defineNuxtConfig(arg0: unknown) {
+//     throw new Error("Function not implemented.");
+// }
+
