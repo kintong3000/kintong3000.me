@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c472497-3c5b-4599-8567-2c6ec74f00a5" name="Changes" comment="v0.99" />
+    <list default="true" id="2c472497-3c5b-4599-8567-2c6ec74f00a5" name="Changes" comment="test">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-fronted/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/nuxt.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-fronted/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-fronted/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/pnpm-lock.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -154,7 +159,7 @@
       <workItem from="1706337437958" duration="8957000" />
       <workItem from="1706421793083" duration="72859000" />
       <workItem from="1707137778602" duration="25714000" />
-      <workItem from="1707384111049" duration="1411000" />
+      <workItem from="1707384111049" duration="3622000" />
     </task>
     <task id="LOCAL-00001" summary="backup">
       <option name="closed" value="true" />
@@ -292,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707382499896</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="test">
+      <option name="closed" value="true" />
+      <created>1707400684107</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1707400684107</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,6 +316,7 @@
     <MESSAGE value="Almost done." />
     <MESSAGE value="complete basic data fetch" />
     <MESSAGE value="v0.99" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.99" />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
 </project>

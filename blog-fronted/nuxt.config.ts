@@ -1,30 +1,51 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import NodeGlobalsPolyfillPlugin from "@esbuild-plugins/node-globals-polyfill";
+import {nodePolyfills} from 'vite-plugin-node-polyfills'
+
 export default defineNuxtConfig({
-    vite:{
-        optimizeDeps: {
-            esbuildOptions: {
-                // Node.js global to browser globalThis
-                define: {
-                    global: 'globalThis'
-                },
-                // Enable esbuild polyfill plugins
-                plugins: [
-                    NodeGlobalsPolyfillPlugin({ //fix something
-                        buffer: true
-                    })
-                ]
-            }
-        }
+    vite: {
+        // optimizeDeps: {
+        //     esbuildOptions: {
+        //         // Node.js global to browser globalThis
+        //         // define: {
+        //         //     global: 'globalThis'
+        //         // },
+        //         // Enable esbuild polyfill plugins
+        //         plugins: [
+        //             // NodeGlobalsPolyfillPlugin({ //fix something
+        //             //     buffer: true
+        //             // })
+        //             nodePolyfills({
+        //                 globals: {
+        //                     Buffer: true, // can also be 'build', 'dev', or false
+        //                     global: true,
+        //                     process: true,
+        //                 }
+        //             }),
+        //
+        //
+        //         ]
+        //     }
+        // }
+
+        plugins: [nodePolyfills({
+
+            globals: {
+                Buffer: true, // can also be 'build', 'dev', or false
+                global: true,
+                process: true,
+            },
+
+        })]
+
     },
 
 
     // ssr: false,
     routeRules: {
-        '/': { isr: 3600 },
-        '/blog/**': { isr: 3600 },
-        '/blog': { isr: 3600 },
-
+        '/': {isr: 3600},
+        '/blog/**': {isr: 3600},
+        '/blog': {isr: 3600},
 
 
     },
