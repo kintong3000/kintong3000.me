@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c472497-3c5b-4599-8567-2c6ec74f00a5" name="Changes" comment="backup">
+    <list default="true" id="2c472497-3c5b-4599-8567-2c6ec74f00a5" name="Changes" comment="v0.99">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-fronted/composables/test-md.ts" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/composables/fakeData.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-fronted/pages/blog/[articlePublishedTime]/[title].vue" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/pages/blog/[articlePublishedTime]/[title].vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-fronted/pages/blog/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/pages/blog/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-fronted/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/blog-fronted/nuxt.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +19,7 @@
         <option value="Vue Options API Component" />
         <option value="HTML File" />
         <option value="Vue Composition API Component" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -45,40 +44,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "20",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/kt/Downloads/KT-blog/blog-fronted/assets/styles",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;20&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/kt/Downloads/KT-blog/blog-fronted/components/icons&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "vue.recent.templates": [
-      "Vue Options API Component",
-      "Vue Composition API Component"
+  &quot;keyToStringList&quot;: {
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Options API Component&quot;,
+      &quot;Vue Composition API Component&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/blog-fronted/components/icons" />
       <recent name="$PROJECT_DIR$/blog-fronted/assets/styles" />
       <recent name="$PROJECT_DIR$/blog-fronted/assets" />
-      <recent name="$PROJECT_DIR$/blog-fronted/components/icons" />
       <recent name="$PROJECT_DIR$/blog-fronted/composable" />
       <recent name="$PROJECT_DIR$/test/src/components" />
     </key>
@@ -130,6 +129,8 @@
       <workItem from="1706337260128" duration="169000" />
       <workItem from="1706337437958" duration="8957000" />
       <workItem from="1706421793083" duration="72859000" />
+      <workItem from="1707137778602" duration="25714000" />
+      <workItem from="1707384111049" duration="595000" />
     </task>
     <task id="LOCAL-00001" summary="backup">
       <option name="closed" value="true" />
@@ -235,7 +236,39 @@
       <option name="project" value="LOCAL" />
       <updated>1707058108060</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="backup">
+      <option name="closed" value="true" />
+      <created>1707232233900</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1707232233900</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Almost done.">
+      <option name="closed" value="true" />
+      <created>1707296947792</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1707296947792</updated>
+    </task>
+    <task id="LOCAL-00016" summary="complete basic data fetch">
+      <option name="closed" value="true" />
+      <created>1707319503774</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1707319503774</updated>
+    </task>
+    <task id="LOCAL-00017" summary="v0.99">
+      <option name="closed" value="true" />
+      <created>1707382499896</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1707382499896</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,6 +276,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="backup" />
-    <option name="LAST_COMMIT_MESSAGE" value="backup" />
+    <MESSAGE value="Almost done." />
+    <MESSAGE value="complete basic data fetch" />
+    <MESSAGE value="v0.99" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.99" />
   </component>
 </project>

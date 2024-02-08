@@ -10,7 +10,7 @@ export default defineNuxtConfig({
                 },
                 // Enable esbuild polyfill plugins
                 plugins: [
-                    NodeGlobalsPolyfillPlugin({
+                    NodeGlobalsPolyfillPlugin({ //fix something
                         buffer: true
                     })
                 ]
@@ -18,7 +18,18 @@ export default defineNuxtConfig({
         }
     },
 
+
     // ssr: false,
+    routeRules: {
+        '/': { isr: 3600 },
+        '/blog/**': { isr: 3600 },
+        '/blog': { isr: 3600 },
+
+
+
+    },
+
+
     devtools: {enabled: true},
     css: [
         '~/assets/styles/main.css',
