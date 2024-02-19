@@ -1,4 +1,4 @@
-package org.kintong.blogserver;
+package com.kintong.blogserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
