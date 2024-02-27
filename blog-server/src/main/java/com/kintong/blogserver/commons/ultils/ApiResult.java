@@ -15,7 +15,7 @@ public record ApiResult<T> (int code,T data,String message) {
         return success(null);
     }
 
-    public static <T> ApiResult<T> fail(ApiCode apiCode){
+    public static <T> ApiResult<T> failure(ApiCode apiCode){
         return new ApiResult<>(apiCode.getCode(),null,apiCode.getMessage());
     }
 
