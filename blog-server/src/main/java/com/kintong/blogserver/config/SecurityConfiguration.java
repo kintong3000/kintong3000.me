@@ -1,8 +1,7 @@
 package com.kintong.blogserver.config;
 
-import com.kintong.blogserver.handle.LoginFailureHandler;
-import com.kintong.blogserver.handle.LoginSuccessHandler;
-import com.kintong.blogserver.handle.UnauthorizedHandler;
+import com.kintong.blogserver.filter.JwtAuthorizerFilter;
+import com.kintong.blogserver.handle.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
 @Configuration
@@ -26,6 +26,15 @@ public class SecurityConfiguration {
     @Autowired
     LoginFailureHandler loginFailureHandler;
 
+    @Autowired
+    PermissionDeniedHandler permissionDeniedHandler;
+
+    @Autowired
+    LogoutHandler logoutHandler;
+
+    @Autowired
+    JwtAuthorizerFilter authorizerFilter;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
@@ -38,20 +47,19 @@ public class SecurityConfiguration {
                         .successHandler(loginSuccessHandler)
                         .failureHandler(loginFailureHandler)
                 )
-//                .logout(conf -> conf
-//                        .logoutUrl("/admin/auth/logout")
-////                        .logoutSuccessHandler()
-//                )
+                .logout(conf -> conf
+                        .logoutUrl("/admin/auth/logout")
+                        .logoutSuccessHandler(logoutHandler)
+                )
                 .exceptionHandling(conf -> conf
-                                .authenticationEntryPoint(unauthorizedHandler)
-//                        .accessDeniedHandler()
+                        .authenticationEntryPoint(unauthorizedHandler)
+                        .accessDeniedHandler(permissionDeniedHandler)
                 )
                 .sessionManagement(conf -> conf
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .csrf(AbstractHttpConfigurer::disable)
-
-//              .addFilterBefore()
+                .addFilterBefore(authorizerFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
 
 

@@ -19,7 +19,7 @@ import java.io.IOException;
 public class LoginFailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        String apiResult = ApiResult.failure(ApiCode.UNAUTHORIZED).toJsonString();
+        String apiResult = ApiResult.failure(ApiCode.LOGIN_EXCEPTION).toJsonString();
         ServletUtil.renderString(response,apiResult);
 
     }
