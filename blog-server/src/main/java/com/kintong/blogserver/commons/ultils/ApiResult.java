@@ -1,7 +1,7 @@
 package com.kintong.blogserver.commons.ultils;
 
 import com.alibaba.fastjson2.JSON;
-import com.kintong.blogserver.commons.ApiCode;
+import com.kintong.blogserver.commons.consts.ApiCode;
 
 /**
  * @Author kintong

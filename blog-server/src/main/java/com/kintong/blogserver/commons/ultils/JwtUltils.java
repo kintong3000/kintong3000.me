@@ -6,7 +6,7 @@ import com.auth0.jwt.JWT;
 
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.kintong.blogserver.commons.Const;
+import com.kintong.blogserver.commons.consts.Const;
 import com.kintong.blogserver.entity.dto.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

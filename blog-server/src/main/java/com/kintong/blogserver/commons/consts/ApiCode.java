@@ -1,4 +1,4 @@
-package com.kintong.blogserver.commons;
+package com.kintong.blogserver.commons.consts;
 
 /**
  * @Author kintong

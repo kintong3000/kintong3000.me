@@ -1,6 +1,6 @@
 package com.kintong.blogserver.filter;
 
-import com.kintong.blogserver.commons.Const;
+import com.kintong.blogserver.commons.consts.Const;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpFilter;

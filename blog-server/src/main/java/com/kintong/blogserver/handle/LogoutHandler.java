@@ -1,6 +1,6 @@
 package com.kintong.blogserver.handle;
 
-import com.kintong.blogserver.commons.ApiCode;
+import com.kintong.blogserver.commons.consts.ApiCode;
 import com.kintong.blogserver.commons.ultils.ApiResult;
 import com.kintong.blogserver.commons.ultils.JwtUltils;
 import com.kintong.blogserver.commons.ultils.ServletUtil;
