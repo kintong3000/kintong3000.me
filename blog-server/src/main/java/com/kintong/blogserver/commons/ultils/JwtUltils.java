@@ -8,6 +8,7 @@ import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.kintong.blogserver.commons.consts.Const;
 import com.kintong.blogserver.entity.dto.Account;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -26,6 +27,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * @Author kintong
  */
+
+@Slf4j
 @Component
 public class JwtUltils {
 
@@ -93,7 +96,7 @@ public class JwtUltils {
         Date expire = decodedJWT.getExpiresAt();
         Date now = new Date();
         boolean isInvalidated = isInvalidated(decodedJWT.getId());
-        if (!expire.before(now) && isInvalidated) {
+        if (!expire.before(now) && !isInvalidated) {
             return true;
         } else {
             return false;
