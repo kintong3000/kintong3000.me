@@ -1,6 +1,7 @@
 package com.kintong.blogserver.config;
 
 import com.kintong.blogserver.filter.JwtAuthorizerFilter;
+import com.kintong.blogserver.filter.RequestLogFilter;
 import com.kintong.blogserver.handle.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -35,6 +36,9 @@ public class SecurityConfiguration {
     @Autowired
     JwtAuthorizerFilter authorizerFilter;
 
+    @Autowired
+    RequestLogFilter requestLogFilter;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
@@ -59,7 +63,9 @@ public class SecurityConfiguration {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .csrf(AbstractHttpConfigurer::disable)
-                .addFilterBefore(authorizerFilter, UsernamePasswordAuthenticationFilter.class)
+//                .addFilterBefore(authorizerFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(requestLogFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(authorizerFilter, RequestLogFilter.class)
                 .build();
 
 

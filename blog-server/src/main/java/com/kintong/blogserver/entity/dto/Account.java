@@ -13,13 +13,13 @@ import lombok.Data;
 @TableName("account")
 public class Account {
     @TableId(type = IdType.AUTO)
-    Integer id;
+    private Integer id;
     @TableField("username")
-    String username;
+    private String username;
     @TableField("email")
-    String email;
+    private String email;
     @TableField("password")
-    String password;
+    private String password;
     @TableField("role")
-    String role;
+    private String role;
 }
