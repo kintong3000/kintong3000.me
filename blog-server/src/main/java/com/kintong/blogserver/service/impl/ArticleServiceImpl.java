@@ -34,7 +34,16 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
     @Override
     public Article getArticle(String urlName) {
-        log.info("urlname:"+urlName);
         return this.query().eq("url_name",urlName).one();
+    }
+
+    @Override
+    public Article getArticle(Integer id) {
+        return this.query().eq("id",id).one();
+    }
+
+    @Override
+    public boolean saveArticle(Article article) {
+        return this.saveOrUpdate(article);
     }
 }

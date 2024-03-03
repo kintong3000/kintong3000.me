@@ -11,4 +11,8 @@ public interface ArticleService extends IService<Article> {
     PageVo<Article> getArticlesList(Integer current, Integer limit);
 
     Article getArticle(String urlName);
+    Article getArticle(Integer id);
+
+    boolean saveArticle(Article article);
+
 }

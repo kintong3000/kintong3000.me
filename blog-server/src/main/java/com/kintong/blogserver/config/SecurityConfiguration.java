@@ -2,7 +2,7 @@ package com.kintong.blogserver.config;
 
 import com.kintong.blogserver.filter.JwtAuthorizerFilter;
 import com.kintong.blogserver.filter.RequestLogFilter;
-import com.kintong.blogserver.handle.*;
+import com.kintong.blogserver.handler.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

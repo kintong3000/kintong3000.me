@@ -1,10 +1,7 @@
 package com.kintong.blogserver.entity.dto;
 
 import com.alibaba.fastjson2.annotation.JSONField;
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -21,7 +18,7 @@ import java.time.LocalDateTime;
 @Data
 @TableName("article")
 public class Article {
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Integer id;
     private String title;
     private String content;

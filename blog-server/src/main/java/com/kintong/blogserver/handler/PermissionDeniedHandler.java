@@ -1,4 +1,4 @@
-package com.kintong.blogserver.handle;
+package com.kintong.blogserver.handler;
 
 import com.kintong.blogserver.commons.consts.ApiCode;
 import com.kintong.blogserver.commons.ultils.ApiResult;

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
-@RequestMapping("/cms/blog")
+@RequestMapping("/api/blog")
 public class ArticleController {
 
 
@@ -22,7 +22,7 @@ public class ArticleController {
     ArticleService articleService;
 
     @GetMapping("article")
-    public ApiResult queryArticleList(@RequestParam (required = false,defaultValue = "1") Integer page,
+    public ApiResult<PageVo<Article>> queryArticleList(@RequestParam (required = false,defaultValue = "1") Integer page,
                                       @RequestParam (required = false,defaultValue = "10") Integer limit){
 
         PageVo<Article> pageVo= articleService.getArticlesList(page,limit);
@@ -30,7 +30,7 @@ public class ArticleController {
     }
 
     @GetMapping("article/{urlName}")
-    public ApiResult queryArticle(@PathVariable String urlName){
+    public ApiResult<Article> queryArticle(@PathVariable String urlName){
         Article article = articleService.getArticle(urlName);
         if(article==null){
             return ApiResult.failure(ApiCode.NOT_FOUND);

@@ -9,8 +9,8 @@ import java.util.Date;
  */
 @Data
 public class AuthorizeVO {
-    String username;
-    String role;
-    String token;
-    Date expire;
+    private String username;
+    private String role;
+    private String token;
+    private Date expire;
 }
