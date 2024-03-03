@@ -14,5 +14,6 @@ public interface ArticleService extends IService<Article> {
     Article getArticle(Integer id);
 
     boolean saveArticle(Article article);
+    boolean deleateArticle(Integer id);
 
 }

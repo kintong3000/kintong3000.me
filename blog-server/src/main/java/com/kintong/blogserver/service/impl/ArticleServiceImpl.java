@@ -46,4 +46,9 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     public boolean saveArticle(Article article) {
         return this.saveOrUpdate(article);
     }
+
+    @Override
+    public boolean deleateArticle(Integer id) {
+        return this.removeById(id);
+    }
 }

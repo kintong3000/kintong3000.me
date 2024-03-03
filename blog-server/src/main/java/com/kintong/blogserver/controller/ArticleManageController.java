@@ -5,6 +5,7 @@ import com.kintong.blogserver.commons.ultils.ApiResult;
 import com.kintong.blogserver.entity.dto.Article;
 import com.kintong.blogserver.entity.vo.PageVo;
 import com.kintong.blogserver.service.ArticleService;
+import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,10 +34,19 @@ public class ArticleManageController {
         return ApiResult.success(article);
     }
 
-    @PostMapping("/article/save")
-    public ApiResult saveArticle(@RequestBody Article article){
-        boolean success = articleService.saveArticle(article);
-        if (success){
+    @PostMapping("article/save")
+    public ApiResult<Null> saveArticle(@RequestBody Article article){
+        boolean saveSuccess = articleService.saveArticle(article);
+        if (saveSuccess){
+            return ApiResult.success();
+        }
+        return ApiResult.failure(ApiCode.FAIL);
+    }
+
+    @DeleteMapping("article/{id}")
+    public ApiResult<Null> deleateArticle(@PathVariable Integer id){
+        boolean deleateSuccess = articleService.deleateArticle(id);
+        if (deleateSuccess){
             return ApiResult.success();
         }
         return ApiResult.failure(ApiCode.FAIL);
