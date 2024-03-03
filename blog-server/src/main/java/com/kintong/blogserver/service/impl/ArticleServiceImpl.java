@@ -10,11 +10,13 @@ import com.kintong.blogserver.entity.vo.PageVo;
 import com.kintong.blogserver.mapper.ArticleMapper;
 import com.kintong.blogserver.service.ArticleService;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
  * @Author kintong
  */
+@Slf4j
 @Service
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements ArticleService {
 
@@ -28,7 +30,11 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
                 .select(Article.class, info -> !"content".equals(info.getColumn()));
         IPage<Article> iPage = articleMapper.selectPage(page,wrapper);
         return new PageVo<>(iPage);
+    }
 
-
+    @Override
+    public Article getArticle(String urlName) {
+        log.info("urlname:"+urlName);
+        return this.query().eq("url_name",urlName).one();
     }
 }

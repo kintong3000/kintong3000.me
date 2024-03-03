@@ -33,5 +33,7 @@ public class Article {
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
+    private String urlName;
+
 
 }

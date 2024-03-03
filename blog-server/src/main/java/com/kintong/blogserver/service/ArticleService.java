@@ -9,4 +9,6 @@ import com.kintong.blogserver.entity.vo.PageVo;
  */
 public interface ArticleService extends IService<Article> {
     PageVo<Article> getArticlesList(Integer current, Integer limit);
+
+    Article getArticle(String urlName);
 }
