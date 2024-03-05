@@ -3,9 +3,12 @@ import {inject, computed} from 'vue'
 import VPIconMoon from './icons/VPIconMoon.vue'
 import VPIconSun from './icons/VPIconSun.vue'
 import {useDark} from "@vueuse/core";
-const isDark = useDark()
 import {nextTick} from "vue";
 import VPSwitch from "@/components/VPSwitch.vue";
+
+
+const isDark = useDark()
+
 const enableTransitions = () =>
     'startViewTransition' in document &&
     window.matchMedia('(prefers-reduced-motion: no-preference)').matches

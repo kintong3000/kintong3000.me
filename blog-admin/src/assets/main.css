@@ -12,7 +12,6 @@ html {
     --c-scrollbar-hover: #949494;
 }
 html.dark {
-    /*--c-bg: #201c1c;*/
     --c-bg: #1B1B1F;
     --c-scrollbar: #111;
     --c-scrollbar-hover: #222;
@@ -44,4 +43,24 @@ html.dark {
     --vp-c-indigo-1: #a8b1ff;
     --vp-c-neutral-inverse: var(--vp-c-black);
     --vp-c-text-2: rgba(235, 235, 245, 0.6);
+}
+
+/*transiton*/
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+    z-index: 1;
+}
+::view-transition-new(root) {
+    z-index: 9999;
+}
+.dark::view-transition-old(root) {
+    z-index: 9999;
+}
+.dark::view-transition-new(root) {
+    z-index: 1;
 }
