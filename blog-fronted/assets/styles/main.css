@@ -11,42 +11,9 @@ html.dark .shiki span {
 :root{
     --my-code-dark-bg:#161619
 }
-:root {
-    --c-bg: #ffffff;
-    --c-scrollbar: #bbb;
-    --c-scrollbar-hover: #949494;
-}
+
 html{
     scroll-padding-top: 90px;
-}
-/*
-Flow color
-*/
-:root{
-    --vp-home-hero-name-color: transparent;
-    --vp-home-hero-name-background: -webkit-linear-gradient(
-            120deg,
-            var(--vp-c-brand-1) 30%,
-            var(--vp-c-brand-next)
-    );
-    --vp-home-hero-image-background-image:linear-gradient(
-            -45deg,
-            var(--vp-c-brand-1) 30%,
-            var(--vp-c-brand-next)
-    );
-    --vp-home-hero-image-filter: blur(80px);
-}
-
-@media (min-width: 640px) {
-    :root {
-        --vp-home-hero-image-filter: blur(120px);
-    }
-}
-
-@media (min-width: 960px) {
-    :root {
-        --vp-home-hero-image-filter: blur(120px);
-    }
 }
 
 
@@ -56,7 +23,11 @@ html {
     overflow-x: hidden;
     overflow-y: scroll;
 }
-
+:root {
+    --c-bg: #ffffff;
+    --c-scrollbar: #bbb;
+    --c-scrollbar-hover: #949494;
+}
 html.dark {
     /*--c-bg: #201c1c;*/
     --c-bg: #1B1B1F;
@@ -308,4 +279,33 @@ slide-enter
     }
 }
 
+/*
+Flow color
+*/
+:root{
+    --vp-home-hero-name-color: transparent;
+    --vp-home-hero-name-background: -webkit-linear-gradient(
+            120deg,
+            var(--vp-c-brand-1) 30%,
+            var(--vp-c-brand-next)
+    );
+    --vp-home-hero-image-background-image:linear-gradient(
+            -45deg,
+            var(--vp-c-brand-1) 30%,
+            var(--vp-c-brand-next)
+    );
+    --vp-home-hero-image-filter: blur(80px);
+}
+
+@media (min-width: 640px) {
+    :root {
+        --vp-home-hero-image-filter: blur(120px);
+    }
+}
+
+@media (min-width: 960px) {
+    :root {
+        --vp-home-hero-image-filter: blur(120px);
+    }
+}
 
