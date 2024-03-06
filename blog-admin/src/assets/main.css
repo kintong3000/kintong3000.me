@@ -64,3 +64,25 @@ html.dark {
 .dark::view-transition-new(root) {
     z-index: 1;
 }
+
+
+html.dark .text {
+    --fg: #bbb;
+    --fg-deep: #ddd;
+    --fg-deeper: #fff;
+}
+
+.text {
+    --fg: #555;
+    --fg-deep: #222;
+    --fg-deeper: #000;
+
+}
+
+.text {
+    /*color: var(--fg) !important;;*/
+    color: var(--fg) ;;
+    max-width: 65ch;
+    font-size: 1rem;
+    line-height: 1.75;
+}
