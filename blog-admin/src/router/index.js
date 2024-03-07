@@ -18,14 +18,14 @@ const router = createRouter({
                     component: Posts,
                 },
                 {
-                    path: 'postsEdit',
-                    name:'postsEdit',
-                    component: PostsEdit,
-                },
-                {
                     path: 'user',
                     name:'user',
                     component: UserManagement,
+                },
+                {
+                    path: 'postsEdit',
+                    name:'postsEdit',
+                    component: PostsEdit,
                 },
             ]
         },

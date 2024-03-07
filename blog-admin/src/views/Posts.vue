@@ -63,7 +63,7 @@ const columns = [
 
         <template v-if="column.key === 'action'">
         <span>
-              <router-link to="/postEdit">编辑</router-link>
+              <router-link to="/postsEdit">编辑</router-link>
               <a-divider type="vertical"/>
 <!--              <router-link to="/">删除</router-link>-->
           <a-popconfirm
