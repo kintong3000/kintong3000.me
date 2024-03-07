@@ -1,7 +1,9 @@
 import axios from "axios";
 import {ElMessage} from "element-plus";
+import {useUserStore} from "@/stores/user.js";
 
 const authItemName = "authorize"
+
 const accessHeader = () => {
     return {
         'Authorization': `Bearer ${takeAccessToken()}`
@@ -69,6 +71,9 @@ function login(username, password, remember, success, failure = defaultFailure){
         'Content-Type': 'application/x-www-form-urlencoded'
     }, (data) => {
         storeAccessToken(remember, data.token, data.expire)
+        const userStore = useUserStore()
+        userStore.userInfo.username=data.username
+        userStore.userInfo.role=data.role
         ElMessage.success(`登录成功，欢迎 ${data.username} 来到我们的系统`)
         success(data)
     }, failure)
@@ -79,7 +84,7 @@ function post(url, data, success, failure = defaultFailure) {
 }
 
 function logout(success, failure = defaultFailure){
-    get('/api/auth/logout', () => {
+    get('http://127.0.0.1:8080/admin/auth/logout', () => {
         deleteAccessToken()
         ElMessage.success(`退出登录成功，欢迎您再次使用`)
         success()
