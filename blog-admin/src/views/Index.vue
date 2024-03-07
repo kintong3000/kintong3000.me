@@ -2,14 +2,16 @@
 import {ref} from "vue";
 import Header from "@/components/Header.vue";
 import SiderBar from "@/components/SiderBar.vue";
+import {useUserStore} from "@/stores/user.js";
+
 
 </script>
 
 <template>
   <Header/>
-  <div class="">
+  <div class="flex">
     <SiderBar style="height: calc(100vh - 70px);"/>
-    <main><router-view/></main>
+    <main><router-view></router-view></main>
   </div>
 
 </template>

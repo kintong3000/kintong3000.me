@@ -18,7 +18,7 @@ const userStore = useUserStore()
             popper-style="box-shadow: rgb(14 18 22 / 35%) 0px 10px 38px -10px, rgb(14 18 22 / 20%) 0px 10px 20px -15px; padding: 20px;"
         >
           <template #reference>
-            <el-avatar> {{ userStore.userInfo.username }}</el-avatar>
+            <el-avatar > {{ userStore.userInfo.username }}</el-avatar>
           </template>
           <template #default>
             <div class="flex flex-col">

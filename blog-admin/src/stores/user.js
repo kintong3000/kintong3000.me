@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import {logout} from '@/net'
+import {logout,get} from '@/net'
 import router from "@/router";
 import axios from "axios";
+import {ElMessage} from "element-plus";
 export const useUserStore = defineStore('user', () => {
     const userInfo = ref({
         username: '',
@@ -12,19 +13,21 @@ export const useUserStore = defineStore('user', () => {
 
 
     async function initializeUserFromToken() {
-        const storedToken = localStorage.getItem('token')
+        const storedToken = localStorage.getItem('authorize') || sessionStorage.getItem('authorize');
         if (storedToken) {
             token.value = storedToken
-            // 假设有一个API用于根据令牌验证用户状态并返回用户信息
-            try {
-                const response = await axios.get('http://127.0.0.1:8080/cms/UserInfo',{ headers: {
-                        'Authorization': `Bearer ${token.value}`
-                    } })
-                userInfo.value = response.data
-            } catch (error) {
-                // 如果令牌验证失败，比如令牌过期或无效
+            get('http://127.0.0.1:8080/cms/UserInfo',(response)=>{
+                userInfo.value.username = response.username
+                userInfo.value.role = response.role
+            },(message, status, url) => {
+                console.warn(`请求地址: ${url}, 状态码: ${status}, 错误信息: ${message}`)
+                ElMessage.warning(message)
                 userLogout()
-            }
+            })
+        }
+        else {
+            ElMessage.warning("未登录")
+            console.log("未登录")
         }
     }
 

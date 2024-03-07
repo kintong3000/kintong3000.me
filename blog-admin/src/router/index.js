@@ -1,5 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import {unauthorized} from "@/net";
+import Posts from "@/views/Posts.vue";
+import UserManagement from "@/views/UserManagement.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,6 +10,18 @@ const router = createRouter({
             path: '/',
             name: 'index',
             component: () => import('@/views/Index.vue'),
+            children: [
+                {
+                    path: 'posts',
+                    name:'posts',
+                    component: Posts,
+                },
+                {
+                    path: 'user',
+                    name:'user',
+                    component: UserManagement,
+                },
+            ]
         },
         {
             path: '/login',
