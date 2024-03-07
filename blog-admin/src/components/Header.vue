@@ -7,7 +7,7 @@ const userStore = useUserStore()
 </script>
 
 <template>
-  <header class="w-full  mt-1 z-100 header-bg" style="border-bottom: #989898 1px solid ">
+  <header class="w-full  pt-1 z-100 header-bg" style="border-bottom: #989898 1px solid ">
     <nav class="h-16 flex flex-row-reverse  ">
       <div class="my-auto mx-3">
         <ToggleDarkSwitch/>

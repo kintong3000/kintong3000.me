@@ -1,29 +1,32 @@
 <script setup>
 import {ref} from "vue";
-
+import {computed} from "vue";
+import {useDark} from "@vueuse/core";
 const selectedKeys = ref(['1']);
-const openKeys = ref(['sub1']);
 const items = ref([
   {
     key: '1',
-    label: 'Navigation One',
-    title: 'Navigation One',
+    label: '文章管理',
+    title: '文章管理',
   },
   {
     key: '2',
-    label: 'Navigation Two',
-    title: 'Navigation Two',
+    label: '用户管理',
+    title: '用户管理',
   }])
+const isDark = useDark()
+const menuTheme = computed(() => {
+  return isDark.value ? 'dark' : 'light';
+})
 </script>
 
 <template>
   <a-menu
-      v-model:openKeys="openKeys"
       v-model:selectedKeys="selectedKeys"
       style="width: 256px"
-      mode="inline"
+      mode="vertical"
       :items="items"
-      theme="dark"
+      :theme="menuTheme"
   />
 </template>
 
