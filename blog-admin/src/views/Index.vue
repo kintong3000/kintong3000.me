@@ -9,9 +9,9 @@ import {useUserStore} from "@/stores/user.js";
 
 <template>
   <Header/>
-  <div class="flex">
+  <div class="flex ">
     <SiderBar style="height: calc(100vh - 70px);"/>
-    <main><router-view></router-view></main>
+    <main class="flex-auto"><router-view></router-view></main>
   </div>
 
 </template>

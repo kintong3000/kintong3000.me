@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router'
 import {unauthorized} from "@/net";
 import Posts from "@/views/Posts.vue";
 import UserManagement from "@/views/UserManagement.vue";
+import PostsEdit from "@/views/PostsEdit.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,6 +16,11 @@ const router = createRouter({
                     path: 'posts',
                     name:'posts',
                     component: Posts,
+                },
+                {
+                    path: 'postsEdit',
+                    name:'postsEdit',
+                    component: PostsEdit,
                 },
                 {
                     path: 'user',
