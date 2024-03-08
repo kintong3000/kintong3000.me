@@ -116,7 +116,10 @@ function UpdatePost(data,success){
     post(url,data,success);
 
 }
-
+function getPostsList(current,pageSize,success){
+    const url = 'http://127.0.0.1:8080/cms/blog/article?page='+current+'&limit='+pageSize
+    get(url,success)
+}
 
 
 
@@ -129,4 +132,4 @@ function unauthorized() {
 }
 
 
-export { post, get, login, logout, unauthorized,deleatePost,getPost,UpdatePost }
+export { post, get, login, logout, unauthorized,deleatePost,getPost,UpdatePost,getPostsList }

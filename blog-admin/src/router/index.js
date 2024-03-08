@@ -48,7 +48,7 @@ const router = createRouter({
         },
         {
             path: '/:catchAll(.*)', // 或者使用 '*'
-            redirect: '/posts'
+            redirect: '/admin/posts'
         }
     ]
 })

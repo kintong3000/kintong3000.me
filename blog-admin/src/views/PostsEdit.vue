@@ -4,6 +4,7 @@ import {ref} from "vue";
 import Markdown from "@/components/Markdown.vue";
 import {getPost, UpdatePost} from '@/net'
 import {useRoute} from "vue-router";
+import router from "@/router/index.js";
 
 const title = ref()
 const id = ref()
@@ -40,6 +41,7 @@ function submitArticle() {
       message: '更改成功',
       type: 'success',
     })
+    router.push("/admin/posts")
   })
 
 }

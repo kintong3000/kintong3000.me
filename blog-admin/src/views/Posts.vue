@@ -1,7 +1,9 @@
 <script setup>
 import {get,deleatePost} from '@/net'
-import {ref,computed} from "vue";
+import {ref,computed,onMounted} from "vue";
 import { message } from 'ant-design-vue';
+import router from "@/router/index.js";
+import {getPostsList} from '@/net'
 const confirm = (id) => {
   deleatePost(id,()=>{
     console.log(id);
@@ -18,9 +20,14 @@ const cancel = (e) => {
 };
 const dataSource=ref([])
 
-get('http://127.0.0.1:8080/cms/blog/article?page=1&limit=20',(res)=>{
- dataSource.value = res.items
-})
+
+function fetchData(current, pageSize) {
+  getPostsList(current,pageSize,(res) => {
+    dataSource.value = res.items;
+    // 更新总数据量，确保分页器正确显示
+    paginations.value.total = res.total;
+  });
+}
 
 
 
@@ -50,23 +57,10 @@ const columns = [
     key: 'action',
   }
 ]
-//
-// //分页
-// const paginations = ref({
-//   pageSize: 10, //每页中显示10条数据
-//   showSizeChanger: true,
-//   pageSizeOptions: ['10', '20', '50'], //每页中显示的数据
-//   ShowSizeChange: (current, pageSize) => this.pageSize = pageSize
-// })
-//
-//
-//
-// function handleTableChange(pagination, filters, sorter) {
-//   paginations.value.current = pagination.current;
-//   paginations.pageSize = pagination.pagesize;
-// }
+
 
 const paginations =  ref({
+  current:1,
   total: 0,
       pageSize: 10,//每页中显示10条数据
       showSizeChanger: true,
@@ -76,13 +70,22 @@ const paginations =  ref({
 function handleTableChange(pagination) {
   paginations.value.current = pagination.current;
   paginations.value.pageSize = pagination.pageSize;
-}
+  fetchData(pagination.current, pagination.pageSize);
 
+}
+onMounted(()=> {
+  fetchData(paginations.value.current,paginations.value.pageSize);
+})
+function toWrite(){
+  router.push('/admin/newpost')
+}
 </script>
 
 <template>
 
-
+<div class="flex flex-row-reverse">
+  <a-button class="m-4" type="primary" @click="toWrite">添加文章</a-button>
+</div>
   <div class="m-3">
     <a-table :dataSource="dataSource" :columns="columns" :pagination="paginations"  @change="handleTableChange" bordered class="h-full">
 
