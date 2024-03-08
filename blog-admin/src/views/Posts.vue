@@ -1,6 +1,6 @@
 <script setup>
 import {get,deleatePost} from '@/net'
-import {ref} from "vue";
+import {ref,computed} from "vue";
 import { message } from 'ant-design-vue';
 const confirm = (id) => {
   deleatePost(id,()=>{
@@ -12,14 +12,13 @@ const confirm = (id) => {
   });
 
 };
-
 const cancel = (e) => {
   console.log(e);
   message.error('删除取消');
 };
 const dataSource=ref([])
 
-get('http://127.0.0.1:8080/cms/blog/article',(res)=>{
+get('http://127.0.0.1:8080/cms/blog/article?page=1&limit=20',(res)=>{
  dataSource.value = res.items
 })
 
@@ -51,21 +50,48 @@ const columns = [
     key: 'action',
   }
 ]
+//
+// //分页
+// const paginations = ref({
+//   pageSize: 10, //每页中显示10条数据
+//   showSizeChanger: true,
+//   pageSizeOptions: ['10', '20', '50'], //每页中显示的数据
+//   ShowSizeChange: (current, pageSize) => this.pageSize = pageSize
+// })
+//
+//
+//
+// function handleTableChange(pagination, filters, sorter) {
+//   paginations.value.current = pagination.current;
+//   paginations.pageSize = pagination.pagesize;
+// }
+
+const paginations =  ref({
+  total: 0,
+      pageSize: 10,//每页中显示10条数据
+      showSizeChanger: true,
+      pageSizeOptions: ["10", "20", "50", "100"],//每页中显示的数据
+      showTotal: total => `共有 ${total} 条数据`,  //分页中显示总的数据
+})
+function handleTableChange(pagination) {
+  paginations.value.current = pagination.current;
+  paginations.value.pageSize = pagination.pageSize;
+}
+
 </script>
 
 <template>
 
 
-  <div>
-    <a-table :dataSource="dataSource" :columns="columns" class="">
+  <div class="m-3">
+    <a-table :dataSource="dataSource" :columns="columns" :pagination="paginations"  @change="handleTableChange" bordered class="h-full">
 
       <template #bodyCell="{ column, record }">
 
         <template v-if="column.key === 'action'">
         <span>
-              <router-link to="/postsEdit">编辑</router-link>
+              <router-link :to="`/admin/postsEdit/${record.id}`">编辑</router-link>
               <a-divider type="vertical"/>
-<!--              <router-link to="/">删除</router-link>-->
           <a-popconfirm
               title="Are you sure delete this task?"
               ok-text="Yes"
@@ -78,6 +104,7 @@ const columns = [
         </span>
         </template>
       </template>
+      <template #title>文章列表</template>
     </a-table>
 
 

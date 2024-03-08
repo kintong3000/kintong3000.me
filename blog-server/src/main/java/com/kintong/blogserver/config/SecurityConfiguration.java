@@ -45,6 +45,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(conf -> conf
                         .requestMatchers("/admin/auth/**").permitAll()
                         .requestMatchers("/api/blog/**").permitAll()
+                        .requestMatchers("cms/blog/article/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(conf -> conf

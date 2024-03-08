@@ -2,21 +2,11 @@
 
 import {ref} from "vue";
 import Markdown from "@/components/Markdown.vue";
-import {getPost, UpdatePost} from '@/net'
-import {useRoute} from "vue-router";
+import { UpdatePost} from '@/net'
+import router from "@/router/index.js";
 
 const title = ref()
 const id = ref()
-const route = useRoute()
-const article = ref()
-
-
-getPost(route.params.id, (data) => {
-  article.value = data
-  articleContent.value = article.value.content
-  title.value = article.value.title
-  id.value = article.value.id
-})
 
 
 // 假设这是您要编辑的文章内容
@@ -30,16 +20,16 @@ function handleTextUpdate(newText) {
 // 当用户点击提交按钮时，执行此函数
 function submitArticle() {
   UpdatePost({
-    "id":id.value,
     "title":title.value,
     "content":articleContent.value,
     "urlName":"test"
 
   },(data)=>{
     ElMessage({
-      message: '更改成功',
+      message: '保存成功',
       type: 'success',
     })
+    router.push("/admin/posts")
   })
 
 }
@@ -48,11 +38,11 @@ function submitArticle() {
 
 <template>
   <div class="flex flex-col h-full">
-<!--    <div class=" mx-auto mt-4">-->
-<!--      <a-space class="" direction="vertical">-->
-<!--        <a-input v-model:value="id" placeholder="id"/>-->
-<!--      </a-space>-->
-<!--    </div>-->
+<!--        <div class=" mx-auto mt-4">-->
+<!--          <a-space class="" direction="vertical">-->
+<!--            <a-input v-model:value="id" placeholder="id(若id存在会抹去原来文章)"/>-->
+<!--          </a-space>-->
+<!--        </div>-->
     <div class="w-10/12 mx-auto mt-4">
       <a-space class="w-full" direction="vertical">
         <a-input v-model:value="title" placeholder="输入标题"/>

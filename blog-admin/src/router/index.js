@@ -3,15 +3,22 @@ import {unauthorized} from "@/net";
 import Posts from "@/views/Posts.vue";
 import UserManagement from "@/views/UserManagement.vue";
 import PostsEdit from "@/views/PostsEdit.vue";
+import Index from "@/views/index.vue";
+import newPost from "@/views/newPost.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
-            path: '/',
-            name: 'index',
-            component: () => import('@/views/Index.vue'),
+            path: '/admin',
+            name: 'admin',
+            component: () => import('@/views/Home.vue'),
             children: [
+                // {
+                //   path:'',
+                //   name:'index',
+                //   component:Index,
+                // },
                 {
                     path: 'posts',
                     name:'posts',
@@ -23,9 +30,14 @@ const router = createRouter({
                     component: UserManagement,
                 },
                 {
-                    path: 'postsEdit',
+                    path: 'postsEdit/:id',
                     name:'postsEdit',
                     component: PostsEdit,
+                },
+                {
+                    path: 'newPost',
+                    name:'newPost',
+                    component: newPost,
                 },
             ]
         },
@@ -33,6 +45,10 @@ const router = createRouter({
             path: '/login',
             name: 'login',
             component: () => import('@/views/Login.vue'),
+        },
+        {
+            path: '/:catchAll(.*)', // 或者使用 '*'
+            redirect: '/posts'
         }
     ]
 })

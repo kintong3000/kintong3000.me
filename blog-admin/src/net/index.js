@@ -95,13 +95,29 @@ function deleatePost(id,success,failure=defaultFailure){
     const url = 'http://127.0.0.1:8080/cms/blog/article/' + id;
 
     axios.delete(url,{ headers: accessHeader()}).then(({data}) =>{
-        console.log("ddd"+data+JSON.stringify(data))
         if(data.code === 200)
             success(data.data)
         else
             failure(data.message, data.code, url)
     }).catch(err => defaultError(err))
 }
+
+function getPost(id,success,failure = defaultFailure){
+    const url = 'http://127.0.0.1:8080/cms/blog/article/' + id;
+    axios.get(url).then(({data})=>{
+        if(data.code === 200)
+            success(data.data)
+        else
+            failure(data.message, data.code, url)
+    }).catch(err => defaultError(err))
+}
+function UpdatePost(data,success){
+    const url = 'http://127.0.0.1:8080/cms/blog/article/save'
+    post(url,data,success);
+
+}
+
+
 
 
 function get(url, success, failure = defaultFailure) {
@@ -113,4 +129,4 @@ function unauthorized() {
 }
 
 
-export { post, get, login, logout, unauthorized,deleatePost }
+export { post, get, login, logout, unauthorized,deleatePost,getPost,UpdatePost }

@@ -15,9 +15,10 @@ function handelClick(item) {
     router.push(item.key)
   }
 }
-onMounted(() =>{
-  router.push('/posts')
-})
+
+// onMounted(() =>{
+//   router.push('/posts')
+// })
 
 
 
@@ -35,10 +36,10 @@ const menuTheme = computed(() => {
       :theme="menuTheme"
       @click="handelClick"
   >
-    <a-menu-item key='/posts'>
+    <a-menu-item key='/admin/posts'>
       <span>文章管理</span>
     </a-menu-item>
-    <a-menu-item key='/user'>
+    <a-menu-item key='/admin/user'>
       <span>用户管理</span>
     </a-menu-item>
 
