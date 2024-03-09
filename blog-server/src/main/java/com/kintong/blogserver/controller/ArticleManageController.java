@@ -18,21 +18,21 @@ public class ArticleManageController {
     @Autowired
     ArticleService articleService;
 
-    @GetMapping("article")
-    public ApiResult<PageVo<Article>> queryArticleListInCMS(@RequestParam(required = false,defaultValue = "1") Integer page,
-                                      @RequestParam (required = false,defaultValue = "10") Integer limit){
-        PageVo<Article> pageVo= articleService.getArticlesList(page,limit);
-        return ApiResult.success(pageVo);
-    }
+//    @GetMapping("article")
+//    public ApiResult<PageVo<Article>> queryArticleListInCMS(@RequestParam(required = false,defaultValue = "1") Integer page,
+//                                      @RequestParam (required = false,defaultValue = "10") Integer limit){
+//        PageVo<Article> pageVo= articleService.getArticlesList(page,limit);
+//        return ApiResult.success(pageVo);
+//    }
 
-    @GetMapping("article/{id}")
-    public ApiResult<Article> queryArticleInCMS(@PathVariable Integer id){
-        Article article = articleService.getArticle(id);
-        if(article==null){
-            return ApiResult.failure(ApiCode.NOT_FOUND);
-        }
-        return ApiResult.success(article);
-    }
+//    @GetMapping("article/{id}")
+//    public ApiResult<Article> queryArticleInCMS(@PathVariable Integer id){
+//        Article article = articleService.getArticle(id);
+//        if(article==null){
+//            return ApiResult.failure(ApiCode.NOT_FOUND);
+//        }
+//        return ApiResult.success(article);
+//    }
 
     @PostMapping("article/save")
     public ApiResult<Null> saveArticle(@RequestBody Article article){

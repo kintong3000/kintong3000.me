@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import {logout,get} from '@/net'
+import {logout,get,getUserInfo} from '@/net'
 import router from "@/router";
-import axios from "axios";
 import {ElMessage} from "element-plus";
 export const useUserStore = defineStore('user', () => {
     const userInfo = ref({
@@ -16,7 +15,7 @@ export const useUserStore = defineStore('user', () => {
         const storedToken = localStorage.getItem('authorize') || sessionStorage.getItem('authorize');
         if (storedToken) {
             token.value = storedToken
-            get('http://127.0.0.1:8080/cms/UserInfo',(response)=>{
+            getUserInfo((response)=>{
                 userInfo.value.username = response.username
                 userInfo.value.role = response.role
             },(message, status, url) => {

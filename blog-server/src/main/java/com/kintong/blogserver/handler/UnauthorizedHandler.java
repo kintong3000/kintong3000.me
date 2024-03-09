@@ -21,6 +21,12 @@ public class UnauthorizedHandler implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         String apiResult = ApiResult.failure(ApiCode.UNAUTHORIZED).toJsonString();
-        ServletUtil.renderString(response,apiResult);
+        if (response.getStatus()==404){
+            ServletUtil.renderString(response,ApiResult.failure(ApiCode.NOT_FOUND).toJsonString());
+
+        }else {
+            ServletUtil.renderString(response,apiResult);
+
+        }
     }
 }

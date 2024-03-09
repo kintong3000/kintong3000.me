@@ -1,8 +1,11 @@
 import axios from "axios";
 import {ElMessage} from "element-plus";
 import {useUserStore} from "@/stores/user.js";
-
+import {baseUrl} from "@/const"
 const authItemName = "authorize"
+const api = axios.create({
+    baseURL: baseUrl
+});
 
 const accessHeader = () => {
     return {
@@ -47,7 +50,7 @@ function takeAccessToken() {
 
 
 function internalPost(url, data, headers, success, failure, error = defaultError){
-    axios.post(url, data, { headers: headers }).then(({data}) => {
+    api.post(url, data, { headers: headers }).then(({data}) => {
         if(data.code === 200)
             success(data.data)
         else
@@ -56,7 +59,7 @@ function internalPost(url, data, headers, success, failure, error = defaultError
 }
 
 function internalGet(url, headers, success, failure, error = defaultError){
-    axios.get(url, { headers: headers }).then(({data}) => {
+    api.get(url, { headers: headers }).then(({data}) => {
         if(data.code === 200)
             success(data.data)
         else
@@ -64,7 +67,7 @@ function internalGet(url, headers, success, failure, error = defaultError){
     }).catch(err => error(err))
 }
 function login(username, password, remember, success, failure = defaultFailure){
-    internalPost('http://127.0.0.1:8080/admin/auth/login', {
+    internalPost('/admin/auth/login', {
         username: username,
         password: password
     }, {
@@ -84,7 +87,7 @@ function post(url, data, success, failure = defaultFailure) {
 }
 
 function logout(success, failure = defaultFailure){
-    get('http://127.0.0.1:8080/admin/auth/logout', () => {
+    get('/admin/auth/logout', () => {
         deleteAccessToken()
         ElMessage.success(`退出登录成功，欢迎您再次使用`)
         success()
@@ -92,9 +95,9 @@ function logout(success, failure = defaultFailure){
 }
 
 function deleatePost(id,success,failure=defaultFailure){
-    const url = 'http://127.0.0.1:8080/cms/blog/article/' + id;
+    const url = '/cms/blog/article/' + id;
 
-    axios.delete(url,{ headers: accessHeader()}).then(({data}) =>{
+    api.delete(url,{ headers: accessHeader()}).then(({data}) =>{
         if(data.code === 200)
             success(data.data)
         else
@@ -103,8 +106,8 @@ function deleatePost(id,success,failure=defaultFailure){
 }
 
 function getPost(id,success,failure = defaultFailure){
-    const url = 'http://127.0.0.1:8080/cms/blog/article/' + id;
-    axios.get(url).then(({data})=>{
+    const url = '/api/blog/article/id/' + id;
+    api.get(url).then(({data})=>{
         if(data.code === 200)
             success(data.data)
         else
@@ -112,16 +115,19 @@ function getPost(id,success,failure = defaultFailure){
     }).catch(err => defaultError(err))
 }
 function newOrUpdatePost(data,success,failure=defaultFailure){
-    const url = 'http://127.0.0.1:8080/cms/blog/article/save'
+    const url = '/cms/blog/article/save'
     post(url,data,success,failure);
 
 }
 function getPostsList(current,pageSize,success){
-    const url = 'http://127.0.0.1:8080/cms/blog/article?page='+current+'&limit='+pageSize
+    const url = '/api/blog/article?page='+current+'&limit='+pageSize
     get(url,success)
 }
+function getUserInfo(success,failure){
+    const url='/cms/UserInfo'
+    get(url,success,failure)
 
-
+}
 
 function get(url, success, failure = defaultFailure) {
     internalGet(url, accessHeader(), success, failure)
@@ -132,4 +138,4 @@ function unauthorized() {
 }
 
 
-export { post, get, login, logout, unauthorized,deleatePost,getPost,newOrUpdatePost,getPostsList }
+export { post, get, login, logout, unauthorized,deleatePost,getPost,newOrUpdatePost,getPostsList,getUserInfo }

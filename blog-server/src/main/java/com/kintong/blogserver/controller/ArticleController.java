@@ -37,4 +37,16 @@ public class ArticleController {
         }
         return ApiResult.success(article);
     }
+
+
+    @GetMapping("article/id/{id}")
+    public ApiResult<Article> queryArticleById(@PathVariable Integer id){
+        Article article = articleService.getArticle(id);
+        if(article==null){
+            return ApiResult.failure(ApiCode.NOT_FOUND);
+        }
+        return ApiResult.success(article);
+    }
+
+
 }
