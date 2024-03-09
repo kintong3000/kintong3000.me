@@ -10,6 +10,8 @@ const title = ref()
 const id = ref()
 const route = useRoute()
 const article = ref()
+const urlName = ref()
+const articleContent = ref('')
 
 
 getPost(route.params.id, (data) => {
@@ -17,11 +19,11 @@ getPost(route.params.id, (data) => {
   articleContent.value = article.value.content
   title.value = article.value.title
   id.value = article.value.id
+  urlName.value=article.value.urlName
 })
 
 
-// 假设这是您要编辑的文章内容
-const articleContent = ref('')
+
 
 // 当MarkdownEditor组件中的文章内容更新时，这个函数会被调用
 function handleTextUpdate(newText) {
@@ -34,7 +36,7 @@ function submitArticle() {
     "id":id.value,
     "title":title.value,
     "content":articleContent.value,
-    "urlName":"test"
+    "urlName":urlName.value
 
   },(data)=>{
     ElMessage({
@@ -50,11 +52,11 @@ function submitArticle() {
 
 <template>
   <div class="flex flex-col h-full">
-<!--    <div class=" mx-auto mt-4">-->
-<!--      <a-space class="" direction="vertical">-->
-<!--        <a-input v-model:value="id" placeholder="id"/>-->
-<!--      </a-space>-->
-<!--    </div>-->
+    <div class=" mx-auto mt-4">
+      <a-space class="" direction="vertical">
+        <a-input v-model:value="urlName" placeholder="urlName"/>
+      </a-space>
+    </div>
     <div class="w-10/12 mx-auto mt-4">
       <a-space class="w-full" direction="vertical">
         <a-input v-model:value="title" placeholder="输入标题"/>
