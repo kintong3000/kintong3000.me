@@ -2,7 +2,7 @@
 
 import {ref} from "vue";
 import Markdown from "@/components/Markdown.vue";
-import {getPost, UpdatePost} from '@/net'
+import {getPost, newOrUpdatePost} from '@/net'
 import {useRoute} from "vue-router";
 import router from "@/router/index.js";
 
@@ -32,7 +32,7 @@ function handleTextUpdate(newText) {
 
 // 当用户点击提交按钮时，执行此函数
 function submitArticle() {
-  UpdatePost({
+  newOrUpdatePost({
     "id":id.value,
     "title":title.value,
     "content":articleContent.value,

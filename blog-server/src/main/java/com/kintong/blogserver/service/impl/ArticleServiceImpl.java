@@ -11,6 +11,7 @@ import com.kintong.blogserver.mapper.ArticleMapper;
 import com.kintong.blogserver.service.ArticleService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -44,7 +45,15 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
     @Override
     public boolean saveArticle(Article article) {
-        return this.saveOrUpdate(article);
+//        return this.saveOrUpdate(article);
+        try {
+            this.saveOrUpdate(article);
+            return true; // 如果没有异常发生，表示保存成功
+        } catch (DataIntegrityViolationException e) {
+            // 在这里处理违反数据完整性的异常，例如重复的键
+            return false; // 返回false，表示保存失败
+        }
+
     }
 
     @Override

@@ -111,9 +111,9 @@ function getPost(id,success,failure = defaultFailure){
             failure(data.message, data.code, url)
     }).catch(err => defaultError(err))
 }
-function UpdatePost(data,success){
+function newOrUpdatePost(data,success,failure=defaultFailure){
     const url = 'http://127.0.0.1:8080/cms/blog/article/save'
-    post(url,data,success);
+    post(url,data,success,failure);
 
 }
 function getPostsList(current,pageSize,success){
@@ -132,4 +132,4 @@ function unauthorized() {
 }
 
 
-export { post, get, login, logout, unauthorized,deleatePost,getPost,UpdatePost,getPostsList }
+export { post, get, login, logout, unauthorized,deleatePost,getPost,newOrUpdatePost,getPostsList }

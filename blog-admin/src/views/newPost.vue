@@ -2,8 +2,9 @@
 
 import {ref} from "vue";
 import Markdown from "@/components/Markdown.vue";
-import {UpdatePost} from '@/net'
+import {newOrUpdatePost} from '@/net'
 import router from "@/router/index.js";
+import {ElMessage} from "element-plus";
 
 const title = ref()
 const articleContent = ref('')
@@ -16,7 +17,7 @@ function handleTextUpdate(newText) {
 
 // 当用户点击提交按钮时，执行此函数
 function submitArticle() {
-  UpdatePost({
+  newOrUpdatePost({
     "title": title.value,
     "content": articleContent.value,
     "urlName": urlName.value
@@ -26,6 +27,10 @@ function submitArticle() {
       type: 'success',
     })
     router.push("/admin/posts")
+  },
+    (message, status, url) => {
+      console.warn(`请求地址: ${url}, 状态码: ${status}, 错误信息: ${message}`)
+      ElMessage.warning(message+",请检查urlName是否唯一")
   })
 
 }
