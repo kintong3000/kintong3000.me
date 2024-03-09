@@ -2,22 +2,19 @@
 
 import {ref} from "vue";
 import Markdown from "@/components/Markdown.vue";
-import {getPost, newOrUpdatePost} from '@/net'
-import {useRoute} from "vue-router";
+import {getIntroduction,UpdateIntroduction} from '@/net'
 import router from "@/router/index.js";
 
 const title = ref()
 const id = ref()
-const route = useRoute()
 const urlName = ref()
 const articleContent = ref('')
 
 
-getPost(route.params.id, (data) => {
+getIntroduction((data) => {
   articleContent.value = data.content
   title.value = data.title
   id.value = data.id
-  urlName.value=data.urlName
 })
 
 
@@ -30,12 +27,10 @@ function handleTextUpdate(newText) {
 
 // 当用户点击提交按钮时，执行此函数
 function submitArticle() {
-  newOrUpdatePost({
+  UpdateIntroduction({
     "id":id.value,
     "title":title.value,
     "content":articleContent.value,
-    "urlName":urlName.value
-
   },(data)=>{
     ElMessage({
       message: '更改成功',
@@ -50,11 +45,7 @@ function submitArticle() {
 
 <template>
   <div class="flex flex-col h-full">
-    <div class=" mx-auto mt-4">
-      <a-space class="" direction="vertical">
-        <a-input v-model:value="urlName" placeholder="urlName"/>
-      </a-space>
-    </div>
+
     <div class="w-10/12 mx-auto mt-4">
       <a-space class="w-full" direction="vertical">
         <a-input v-model:value="title" placeholder="输入标题"/>
@@ -65,7 +56,7 @@ function submitArticle() {
     </div>
 
     <div class="flex flex-row-reverse m-4">
-      <a-button type="primary" @click="submitArticle">发布</a-button>
+      <a-button type="primary" @click="submitArticle">确认更改</a-button>
     </div>
 
   </div>

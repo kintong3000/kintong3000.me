@@ -3,8 +3,10 @@ package com.kintong.blogserver.controller;
 import com.kintong.blogserver.commons.consts.ApiCode;
 import com.kintong.blogserver.commons.ultils.ApiResult;
 import com.kintong.blogserver.entity.dto.Article;
+import com.kintong.blogserver.entity.dto.Introduction;
 import com.kintong.blogserver.entity.vo.PageVo;
 import com.kintong.blogserver.service.ArticleService;
+import com.kintong.blogserver.service.IntroductionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +22,10 @@ public class ArticleController {
 
     @Autowired
     ArticleService articleService;
+
+    @Autowired
+    IntroductionService introductionService;
+
 
     @GetMapping("article")
     public ApiResult<PageVo<Article>> queryArticleList(@RequestParam (required = false,defaultValue = "1") Integer page,
@@ -47,6 +53,14 @@ public class ArticleController {
         }
         return ApiResult.success(article);
     }
+
+    @GetMapping("introduction")
+    public ApiResult<Introduction> Index(){
+        Introduction introduction = introductionService.getIndex();
+        if(introduction ==null){
+            return ApiResult.failure(ApiCode.NOT_FOUND);
+        }
+        return ApiResult.success(introduction);  }
 
 
 }

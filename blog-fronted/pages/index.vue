@@ -6,7 +6,6 @@ import Shiki from '@shikijs/markdown-it'
 import anchor from 'markdown-it-anchor'
 
 // @ts-expect-error missing types
-import TOC from 'markdown-it-table-of-contents'
 import MarkdownItGitHubAlerts from 'markdown-it-github-alerts'
 
 import 'markdown-it-github-alerts/styles/github-colors-light.css'
@@ -14,8 +13,6 @@ import 'markdown-it-github-alerts/styles/github-colors-dark-class.css'
 import 'markdown-it-github-alerts/styles/github-base.css'
 
 import {preWrapperPlugin} from '~/composables/preWrapper'
-import {introduction} from '~/composables/fakeData'
-import matter from 'gray-matter';
 import config from '~/config/fetchConfig'
 
 const md = new MarkdownIt()
@@ -34,16 +31,15 @@ md.use(MarkdownItGitHubAlerts)
 md.use(preWrapperPlugin, false)
 const route = useRoute()
 
-const {data} = await useFetch(`introduction`, {
+const {data} = await useFetch(`api/blog/introduction`, {
   method:"GET",
   baseURL:config.api,
 })
 
 // const result = matter(introduction)
-const result = matter(data.value.data.content)
-const frontmatter = result.data
-const content = result.content
-const contentHtml = md.render(content)
+const result = data.value.data
+
+const contentHtml = md.render(result.content)
 
 </script>
 
@@ -51,12 +47,12 @@ const contentHtml = md.render(content)
   <div class="bg-color-flow "></div>
   <div class="prose prose-coolgray dark:prose-invert m-auto slide-enter-content">
     <div
-        v-if="frontmatter.title"
+        v-if="result.title"
         class="prose m-auto mb-8"
-        :class="[frontmatter.wrapperClass]"
+        :class="[result.wrapperClass]"
     >
       <h1 class="mb-0 slide-enter-50 clip">
-        {{ frontmatter.title }}
+        {{ result.title }}
       </h1>
     </div>
     <article class="text-xl ">

@@ -36,6 +36,10 @@ const menuTheme = computed(() => {
       :theme="menuTheme"
       @click="handelClick"
   >
+
+    <a-menu-item key='/admin/updateIntroduction'>
+      <span>首页信息编辑</span>
+    </a-menu-item>
     <a-menu-item key='/admin/posts'>
       <span>文章管理</span>
     </a-menu-item>

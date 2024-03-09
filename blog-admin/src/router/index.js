@@ -5,6 +5,7 @@ import UserManagement from "@/views/UserManagement.vue";
 import PostsEdit from "@/views/PostsEdit.vue";
 import Index from "@/views/index.vue";
 import newPost from "@/views/newPost.vue";
+import UpdateIntroduction from "@/views/UpdateIntroduction.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,6 +40,11 @@ const router = createRouter({
                     name:'newPost',
                     component: newPost,
                 },
+                {
+                    path: 'updateIntroduction',
+                    name:'updateIntroduction',
+                    component: UpdateIntroduction,
+                }
             ]
         },
         {

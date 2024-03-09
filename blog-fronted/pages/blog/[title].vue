@@ -14,8 +14,7 @@ import 'markdown-it-github-alerts/styles/github-colors-dark-class.css'
 import 'markdown-it-github-alerts/styles/github-base.css'
 
 import { preWrapperPlugin } from '~/composables/preWrapper'
-import  {fakemd} from '~/composables/fakeData'
-import matter from 'gray-matter';
+
 import config from "~/config/fetchConfig";
 
 
@@ -39,7 +38,7 @@ md.use(preWrapperPlugin,false)
 const route = useRoute()
 
 
-const {data,error} = await useFetch(`${route.params.articlePublishedTime}/${route.params.title}`, {
+const {data,error} = await useFetch(`api/blog/article/${route.params.title}`, {
   method:"GET",
   baseURL:config.api,
 })
@@ -47,11 +46,11 @@ if (error.value){
   console.log(error.value)
 }
 
-// const result = matter(fakemd)
-const result = matter(data.value.data.content)
-const frontmatter = result.data
-const content = result.content
-const contentHtml = md.render(content)
+// @ts-expect-error missing types
+const result = data.value.data
+const contentHtml = md.render(result.content)
+
+
 
 </script>
 
@@ -59,35 +58,19 @@ const contentHtml = md.render(content)
 
   <div class="prose prose-coolgray dark:prose-invert m-auto slide-enter-content">
     <div
-        v-if=" frontmatter.title"
+        v-if="result.title"
         class="prose m-auto mb-8"
-        :class="[frontmatter.wrapperClass]"
+        :class="[result.wrapperClass]"
     >
       <h1 class="mb-0 slide-enter-50">
-        {{ frontmatter.title }}
+        {{ result.title }}
       </h1>
       <p
-          v-if="frontmatter.date"
+          v-if="result.createTime"
           class="opacity-50 !-mt-6 slide-enter-50"
       >
-        {{ formatDate(frontmatter.date, false) }}
-<!--        <span v-if="frontmatter.duration">· {{ frontmatter.duration }}</span>-->
+        {{ formatDate(result.createTime, false) }}
       </p>
-<!--      <p v-if="frontmatter.place" class="mt&#45;&#45;4!">-->
-<!--        <span op50>at </span>-->
-<!--        <a v-if="frontmatter.placeLink" :href="frontmatter.placeLink" target="_blank">-->
-<!--          {{ frontmatter.place }}-->
-<!--        </a>-->
-<!--        <span v-else font-bold>-->
-<!--        {{ frontmatter.place }}-->
-<!--      </span>-->
-<!--      </p>-->
-<!--      <p-->
-<!--          v-if="frontmatter.subtitle"-->
-<!--          class="opacity-50 !-mt-6 italic slide-enter"-->
-<!--      >-->
-<!--        {{ frontmatter.subtitle }}-->
-<!--      </p>-->
 
     </div>
     <article class="text-base ">

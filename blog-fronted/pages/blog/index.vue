@@ -4,26 +4,26 @@ import type {Post} from "~/types";
 import config from "~/config/fetchConfig"
 
 // const articleList = fakeArticleList
-const {data} = await useFetch(`bloglist`, {
+const {data} = await useFetch(`api/blog/article`, {
   method:"GET",
   baseURL:config.api,
 })
-
-const articleList = data.value.data.articleList
+// @ts-expect-error missing types
+const articleList = data.value.data.items
 const getYear = (a: Date | string | number) => new Date(a).getFullYear()
 const isSameYear = (a?: Date | string | number, b?: Date | string | number) => a && b && getYear(a) === getYear(b)
 
 function isSameGroup(a: Post, b?: Post) {
-  return isSameYear(a.date, b?.date)
+  return isSameYear(a.createTime, b?.createTime)
 }
 
 function getGroupName(p: Post) {
 
-  return getYear(p.date)
+  return getYear(p.createTime)
 }
 
 function getBlogUrl(p: Post) {
-  return 'blog/'+p.name
+  return 'blog/'+p.urlName
 }
 </script>
 

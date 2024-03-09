@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @Author kintong
  */
 @Service
-public class AccountServiceimpl extends ServiceImpl<AccountMapper, Account>  implements AccountService {
+public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account>  implements AccountService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

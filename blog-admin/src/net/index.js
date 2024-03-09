@@ -2,6 +2,8 @@ import axios from "axios";
 import {ElMessage} from "element-plus";
 import {useUserStore} from "@/stores/user.js";
 import {baseUrl} from "@/const"
+
+
 const authItemName = "authorize"
 const api = axios.create({
     baseURL: baseUrl
@@ -114,8 +116,24 @@ function getPost(id,success,failure = defaultFailure){
             failure(data.message, data.code, url)
     }).catch(err => defaultError(err))
 }
+
+
+function getIntroduction(success,failure = defaultFailure){
+    const url = '/api/blog/introduction';
+    api.get(url).then(({data})=>{
+        if(data.code === 200)
+            success(data.data)
+        else
+            failure(data.message, data.code, url)
+    }).catch(err => defaultError(err))
+}
 function newOrUpdatePost(data,success,failure=defaultFailure){
     const url = '/cms/blog/article/save'
+    post(url,data,success,failure);
+
+}
+function UpdateIntroduction(data,success,failure=defaultFailure){
+    const url = '/cms/blog/introduction/update'
     post(url,data,success,failure);
 
 }
@@ -138,4 +156,4 @@ function unauthorized() {
 }
 
 
-export { post, get, login, logout, unauthorized,deleatePost,getPost,newOrUpdatePost,getPostsList,getUserInfo }
+export { post, get, login, logout, unauthorized,deleatePost,getPost,newOrUpdatePost,getPostsList,getUserInfo,getIntroduction,UpdateIntroduction }
