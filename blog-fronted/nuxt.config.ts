@@ -3,6 +3,14 @@ import NodeGlobalsPolyfillPlugin from "@esbuild-plugins/node-globals-polyfill";
 import {nodePolyfills} from 'vite-plugin-node-polyfills'
 
 export default defineNuxtConfig({
+    runtimeConfig: {
+        // Private config that is only available on the server
+        apiSecret: {API_URL:process.env.API_URL},
+        // Config within public will be also exposed to the client
+        public: {
+            apiBase: '/api'
+        }
+    },
     vite: {
         // optimizeDeps: {
         //     esbuildOptions: {
