@@ -1,7 +1,7 @@
 const isProd:boolean = process.env.NODE_ENV === 'production'
 
 const devUrl:string = 'http://127.0.0.1:8080'
-console.log(process.env.API_URL);
+console.log(process.env.NODE_ENV);
 // @ts-ignore
 const prodUrl:string = process.env.API_URL;
 
