@@ -8,7 +8,7 @@ export default defineNuxtConfig({
         apiSecret: {API_URL:process.env.API_URL},
         // Config within public will be also exposed to the client
         public: {
-            apiBase: '/api'
+            API_URL:process.env.API_URL
         }
     },
     vite: {
