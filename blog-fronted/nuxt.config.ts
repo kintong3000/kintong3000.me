@@ -5,11 +5,11 @@ import {nodePolyfills} from 'vite-plugin-node-polyfills'
 export default defineNuxtConfig({
     runtimeConfig: {
         // Private config that is only available on the server
-        apiSecret: {API_URL:process.env.API_URL},
+        // apiSecret: {API_URL:process.env.API_URL},
         // Config within public will be also exposed to the client
-        // public: {
-        //     API_URL:process.env.API_URL
-        // }
+        public: {
+            API_URL:process.env.API_URL
+        }
     },
     vite: {
         // optimizeDeps: {
