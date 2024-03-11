@@ -4,7 +4,7 @@ const devUrl:string = 'http://127.0.0.1:8080'
 
 const runtimeconfig = useRuntimeConfig()
 
-console.log(runtimeconfig.public.API_URL);
+console.log(runtimeconfig.apiSecret.API_URL);
 // @ts-ignore
 const prodUrl:string = process.env.API_URL;
 
