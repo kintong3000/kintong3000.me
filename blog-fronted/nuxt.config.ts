@@ -48,10 +48,17 @@ export default defineNuxtConfig({
                 process: true,
             },
 
-        })]
+        })],
+
 
     },
-
+    nitro: {
+        routeRules: {
+            '/api/**': {
+                proxy: process.env.API_URL || 'http://localhost:8080'
+            }
+        }
+    },
 
     // ssr: false,
     routeRules: {
@@ -77,8 +84,10 @@ export default defineNuxtConfig({
         '@pinia/nuxt',
         '@unocss/nuxt',
         '@vueuse/nuxt',
-        '@element-plus/nuxt'
+        '@element-plus/nuxt',
     ],
+
+
     // elementPlus: { /** Options */ }
 })
 // function defineNuxtConfig(arg0: unknown) {
