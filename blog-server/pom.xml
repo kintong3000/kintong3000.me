@@ -16,6 +16,31 @@
 	<properties>
 		<java.version>17</java.version>
 	</properties>
+
+	<profiles>
+		<!-- 开发环境 -->
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<environment>dev</environment>
+			</properties>
+		</profile>
+		<!-- 生产环境 -->
+		<profile>
+			<id>prod</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<environment>prod</environment>
+			</properties>
+		</profile>
+	</profiles>
+
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -77,6 +102,9 @@
 		</dependency>
 	</dependencies>
 
+
+
+
 	<build>
 		<plugins>
 			<plugin>
@@ -92,6 +120,31 @@
 				</configuration>
 			</plugin>
 		</plugins>
+
+		<resources>
+			<!--排除配置文件-->
+			<resource>
+				<directory>src/main/resources</directory>
+				<!--先排除所有的配置文件-->
+				<excludes>
+					<!--使用通配符，当然可以定义多个exclude标签进行排除-->
+					<exclude>application*.yml</exclude>
+				</excludes>
+			</resource>
+
+			<!--根据激活条件引入打包所需的配置和文件-->
+			<resource>
+				<directory>src/main/resources</directory>
+				<!--引入所需环境的配置文件-->
+				<filtering>true</filtering>
+				<includes>
+					<include>application.yml</include>
+					<!--根据maven选择环境导入配置文件-->
+					<!--suppress UnresolvedMavenProperty -->
+					<include>application-${environment}.yml</include>
+				</includes>
+			</resource>
+		</resources>
 	</build>
 
 </project>

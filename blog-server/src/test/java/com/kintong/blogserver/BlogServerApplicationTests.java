@@ -28,11 +28,7 @@ class BlogServerApplicationTests {
 
 	@Test
 	public void testservice(){
-		Page<Article> page = new Page<>(1, 10);
-		LambdaQueryWrapper<Article> wrapper = new QueryWrapper<Article>().lambda()
-				.select(Article.class, info -> !"content".equals(info.getColumn()));
-		IPage<Article> iPage = articleMapper.selectPage(page,wrapper);
-		System.out.println(iPage.getRecords());
+
 	}
 
 }

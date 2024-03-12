@@ -1,12 +1,12 @@
 import axios from "axios";
 import {ElMessage} from "element-plus";
 import {useUserStore} from "@/stores/user.js";
-import {baseUrl} from "@/const"
+import config from "@/config/index.js"
 
 
 const authItemName = "authorize"
 const api = axios.create({
-    baseURL: baseUrl
+    baseURL: config.api
 });
 
 const accessHeader = () => {
