@@ -40,7 +40,7 @@ const route = useRoute()
 const runtimeconfig = useRuntimeConfig()
 const {data,error} = await useFetch(`api/blog/article/${route.params.title}`, {
   method:"GET",
-  baseURL:runtimeconfig.apiUrl,
+  baseURL:runtimeconfig.public.apiUrl,
 })
 if (error.value){
   console.log(error.value)

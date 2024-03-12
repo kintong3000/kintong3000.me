@@ -21,9 +21,17 @@ useHead({
         '        if (setting === \'dark\' || (prefersDark && setting !== \'light\'))\n' +
         '          document.documentElement.classList.toggle(\'dark\', true)\n' +
         '      })()'
-  }]
-})
+  }],
 
+  title: 'kintong',
+  meta: [
+    { name: 'description', content: 'kintong-blog' }
+  ],
+  link: [
+    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+  ]
+
+})
 </script>
 
 

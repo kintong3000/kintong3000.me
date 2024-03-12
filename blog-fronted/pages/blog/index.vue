@@ -6,7 +6,7 @@ const runtimeconfig = useRuntimeConfig()
 // const articleList = fakeArticleList
 const {data} = await useFetch(`api/blog/article`, {
   method:"GET",
-  baseURL:runtimeconfig.apiUrl,
+  baseURL:runtimeconfig.public.apiUrl,
 })
 // @ts-expect-error missing types
 const articleList = data.value.data.items
@@ -48,7 +48,7 @@ function getBlogUrl(p: Post) {
           '--enter-stage': article.id,
           '--enter-step': '60ms',
         }">
-        <router-link :to="getBlogUrl(article)" class="item block font-normal mb-6 mt-2 no-underline "
+        <NuxtLink :to="getBlogUrl(article)" class="item block font-normal mb-6 mt-2 no-underline "
 
         >
           <li class="no-underline" flex="~ col md:row gap-2 md:items-center">
@@ -61,7 +61,7 @@ function getBlogUrl(p: Post) {
               </span>
             </div>
           </li>
-        </router-link></div>
+        </NuxtLink></div>
       </div>
     </ul>
   </div>

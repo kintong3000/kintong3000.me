@@ -10,7 +10,10 @@ export default defineNuxtConfig({
         // public: {
         //     API_URL:process.env.API_URL
         // }
-        apiUrl: process.env.API_URL || 'http://localhost:3000'
+        public: {
+            apiUrl: process.env.API_URL || 'http://localhost:8080'
+        }
+
     },
     vite: {
         // optimizeDeps: {
