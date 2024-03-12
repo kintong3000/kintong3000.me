@@ -38,9 +38,9 @@ md.use(preWrapperPlugin,false)
 const route = useRoute()
 
 const runtimeconfig = useRuntimeConfig()
-const {data,error} = await useFetch(`api/blog/article/${route.params.title}`, {
+const {data,error} = await useFetch(`/api/blog/article/${route.params.title}`, {
   method:"GET",
-  baseURL:runtimeconfig.public.apiUrl,
+  // baseURL:runtimeconfig.public.apiUrl,
 })
 if (error.value){
   console.log(error.value)

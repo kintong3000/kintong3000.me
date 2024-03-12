@@ -33,9 +33,9 @@ const route = useRoute()
 
 const runtimeconfig = useRuntimeConfig()
 
-const {data} = await useFetch(`api/blog/introduction`, {
+const {data} = await useFetch(`/api/blog/introduction`, {
   method:"GET",
-  baseURL:runtimeconfig.public.apiUrl,
+  // baseURL:runtimeconfig.public.apiUrl,
   key:"1"
 })
 

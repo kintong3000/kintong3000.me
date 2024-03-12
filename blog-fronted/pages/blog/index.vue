@@ -4,9 +4,9 @@ import type {Post} from "~/types";
 import config from "~/config/fetchConfig"
 const runtimeconfig = useRuntimeConfig()
 // const articleList = fakeArticleList
-const {data} = await useFetch(`api/blog/article`, {
+const {data} = await useFetch(`/api/blog/article`, {
   method:"GET",
-  baseURL:runtimeconfig.public.apiUrl,
+  // baseURL:runtimeconfig.public.apiUrl,
 })
 // @ts-expect-error missing types
 const articleList = data.value.data.items
