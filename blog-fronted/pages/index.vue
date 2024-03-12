@@ -56,15 +56,15 @@ const contentHtml = md.render(result.content)
 <template>
   <div class="bg-color-flow "></div>
   <div class="prose prose-coolgray dark:prose-invert m-auto slide-enter-content">
-<!--    <div-->
-<!--        v-if="result.title"-->
-<!--        class="prose m-auto mb-8"-->
-<!--        :class="[result.wrapperClass]"-->
-<!--    >-->
-<!--      <h1 class="mb-0 slide-enter-50 clip">-->
-<!--        {{ result.title }}-->
-<!--      </h1>-->
-<!--    </div>-->
+    <div
+        v-if="result.title"
+        class="prose m-auto mb-8"
+        :class="[result.wrapperClass]"
+    >
+      <h1 class="mb-0 slide-enter-50 clip">
+        {{ result.title }}
+      </h1>
+    </div>
     <article class="text-xl ">
       <div class="slide-enter-content" v-html="contentHtml"></div>
 
