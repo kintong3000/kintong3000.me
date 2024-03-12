@@ -62,7 +62,7 @@ export default defineNuxtConfig({
 
     // ssr: false,
     routeRules: {
-        '/**': { isr: 60000 },
+        '/**': { isr: 600 },
     },
 
 
