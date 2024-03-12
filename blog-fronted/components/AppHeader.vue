@@ -16,18 +16,21 @@
           <NuxtLink to="/projects">
             Projects
           </NuxtLink>
+
+
+          <div class="divider"></div>
+          <NuxtLink to="/email">
+            <CiMail/>
+          </NuxtLink>
           <div class="divider"></div>
 
           <a href="https://github.com/kintong3000" title="Github">
             <IconsSkillIconsGithubDark class="icon1"/>
             <IconsSkillIconsGithubLight class="icon2"/>
           </a>
+
           <div class="divider"></div>
-<!--          <a href="https://discordapp.com/users/kintong#5614" title="Discord">-->
-<!--            <IconsSkillIconsDiscord/>-->
-<!--          </a>-->
-<!--          <div class="divider"></div>-->
-          <a href="https://t.me/kintong3000" title="Discord">
+          <a href="https://t.me/kintong3000" title="Telegram">
             <IconsLogosTelegram/>
           </a>
           <div class="divider"></div>
@@ -43,6 +46,8 @@
 </template>
 
 <script lang="ts" setup>
+
+import CiMail from "~/components/icons/CiMail.vue";
 
 const isTop = ref(true)
 const isDark = useDark()
