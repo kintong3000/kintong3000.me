@@ -37,10 +37,10 @@ md.use(MarkdownItGitHubAlerts)
 md.use(preWrapperPlugin,false)
 const route = useRoute()
 
-
+const runtimeconfig = useRuntimeConfig()
 const {data,error} = await useFetch(`api/blog/article/${route.params.title}`, {
   method:"GET",
-  baseURL:config.api,
+  baseURL:runtimeconfig.apiUrl,
 })
 if (error.value){
   console.log(error.value)
