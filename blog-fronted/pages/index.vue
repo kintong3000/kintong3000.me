@@ -71,7 +71,6 @@ const contentHtml = md.render(result.content)
     </article>
 
   </div>
-  <AppFooter/>
 
 </template>
 
