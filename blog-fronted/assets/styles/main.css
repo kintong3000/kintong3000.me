@@ -216,7 +216,24 @@ slide-enter
                 var(--enter-initial) + var(--enter-stage) * var(--enter-step)
         );
     }
-
+    html:not(.no-sliding) .slide-enter-50{
+        --enter-stage: 3;
+        --enter-step: 90ms;
+        --enter-initial: 0ms;
+        animation: slide-enter 1s both 1;
+        animation-delay: calc(
+                var(--enter-initial) + var(--enter-stage) * var(--enter-step)
+        );
+    }
+    html:not(.no-sliding) .slide-enter-60{
+        --enter-stage: 5;
+        --enter-step: 90ms;
+        --enter-initial: 0ms;
+        animation: slide-enter 1s both 1;
+        animation-delay: calc(
+                var(--enter-initial) + var(--enter-stage) * var(--enter-step)
+        );
+    }
     .slide-enter-content > *:nth-child(1) {
         --enter-stage: 1 !important;
     }

@@ -56,7 +56,7 @@ const contentHtml = md.render(result.content)
 
 <template>
 
-  <div class="prose prose-coolgray dark:prose-invert m-auto slide-enter-content">
+  <div class="prose prose-coolgray dark:prose-invert m-auto ">
     <div
         v-if="result.title"
         class="prose m-auto mb-8"
@@ -67,7 +67,7 @@ const contentHtml = md.render(result.content)
       </h1>
       <p
           v-if="result.createTime"
-          class="opacity-50 !-mt-6 slide-enter-50"
+          class="opacity-50 !-mt-6 slide-enter-60"
       >
         {{ formatDate(result.createTime, false) }}
       </p>

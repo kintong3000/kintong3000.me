@@ -6,10 +6,10 @@ const runtimeconfig = useRuntimeConfig()
 // const articleList = fakeArticleList
 const {data} = await useFetch(`/api/blog/article`, {
   method:"GET",
-  // baseURL:runtimeconfig.public.apiUrl,
 })
 // @ts-expect-error missing types
-const articleList = data.value.data.items
+const articleList = data.value.data.items.reverse();
+
 const getYear = (a: Date | string | number) => new Date(a).getFullYear()
 const isSameYear = (a?: Date | string | number, b?: Date | string | number) => a && b && getYear(a) === getYear(b)
 
@@ -32,12 +32,12 @@ function getBlogUrl(p: Post) {
 
     <div class="text-6xl font-sans	font-bold	text-center	mb-10 slide-enter">Blog</div>
     <ul>
-      <div v-for="article in articleList">
+      <div  v-for="(article, index) in articleList" :key="index">
         <div
-            v-if="!isSameGroup(article, articleList[article.id - 2])"
+            v-if="!isSameGroup(article, articleList[index - 1])"
             select-none relative h20 pointer-events-none slide-enter
             :style="{
-          '--enter-stage': article.id - 3,
+          '--enter-stage': index + 3,
           '--enter-step': '60ms',
         }"
         >
@@ -45,7 +45,7 @@ function getBlogUrl(p: Post) {
                 op10>{{ getGroupName(article) }}</span>
         </div>
         <div class="slide-enter"  :style="{
-          '--enter-stage': article.id,
+          '--enter-stage': index+1,
           '--enter-step': '60ms',
         }">
         <NuxtLink :to="getBlogUrl(article)" class="item block font-normal mb-6 mt-2 no-underline "

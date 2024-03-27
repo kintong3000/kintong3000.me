@@ -55,7 +55,7 @@ const contentHtml = md.render(result.content)
 
 <template>
   <div class="bg-color-flow "></div>
-  <div class="prose prose-coolgray dark:prose-invert m-auto slide-enter-content">
+  <div class="prose prose-coolgray dark:prose-invert m-auto ">
     <div
         v-if="result.title"
         class="prose m-auto mb-8"
