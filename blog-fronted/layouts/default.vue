@@ -2,8 +2,9 @@
   <div>
     <AppHeader />
     <slot />
-    <SpeedInsights/>
   </div>
+  <SpeedInsights/>
+
 </template>
 
 
