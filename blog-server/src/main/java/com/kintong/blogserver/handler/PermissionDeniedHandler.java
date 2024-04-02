@@ -1,8 +1,8 @@
 package com.kintong.blogserver.handler;
 
 import com.kintong.blogserver.commons.consts.ApiCode;
-import com.kintong.blogserver.commons.ultils.ApiResult;
-import com.kintong.blogserver.commons.ultils.ServletUtil;
+import com.kintong.blogserver.core.ultils.ApiResult;
+import com.kintong.blogserver.core.ultils.ServletUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

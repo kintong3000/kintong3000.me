@@ -1,4 +1,4 @@
-package com.kintong.blogserver.commons.ultils;
+package com.kintong.blogserver.core.ultils;
 
 import com.alibaba.fastjson2.JSON;
 import com.kintong.blogserver.commons.consts.ApiCode;

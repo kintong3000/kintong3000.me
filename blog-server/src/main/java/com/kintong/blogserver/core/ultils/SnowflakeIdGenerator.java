@@ -1,4 +1,4 @@
-package com.kintong.blogserver.commons.ultils;
+package com.kintong.blogserver.core.ultils;
 
 /**
  * @Author kintong

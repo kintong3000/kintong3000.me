@@ -1,7 +1,7 @@
 package com.kintong.blogserver.filter;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.kintong.blogserver.commons.ultils.JwtUltils;
+import com.kintong.blogserver.core.ultils.JwtUltils;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

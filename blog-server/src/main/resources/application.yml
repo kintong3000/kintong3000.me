@@ -8,3 +8,9 @@ spring:
   profiles:
     active: '@environment@'
 #    active: dev
+
+github:
+  token:
+  name:
+  repository:
+  committerEmail:

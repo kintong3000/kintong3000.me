@@ -1,15 +1,20 @@
 package com.kintong.blogserver.controller;
 
 import com.kintong.blogserver.commons.consts.ApiCode;
-import com.kintong.blogserver.commons.ultils.ApiResult;
+import com.kintong.blogserver.core.ultils.ApiResult;
+import com.kintong.blogserver.core.ultils.GitHubUltils;
 import com.kintong.blogserver.entity.dto.Article;
 import com.kintong.blogserver.entity.dto.Introduction;
-import com.kintong.blogserver.entity.vo.PageVo;
 import com.kintong.blogserver.service.ArticleService;
 import com.kintong.blogserver.service.IntroductionService;
 import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Base64;
 
 /**
  * @Author kintong
@@ -22,6 +27,9 @@ public class ArticleManageController {
 
     @Autowired
     IntroductionService introductionService;
+
+    @Autowired
+    GitHubUltils gitHubUltils;
 
 //    @GetMapping("article")
 //    public ApiResult<PageVo<Article>> queryArticleListInCMS(@RequestParam(required = false,defaultValue = "1") Integer page,
@@ -43,6 +51,9 @@ public class ArticleManageController {
     public ApiResult<Null> saveArticle(@RequestBody Article article){
         boolean saveSuccess = articleService.saveArticle(article);
         if (saveSuccess){
+            String mdName = article.getTitle()+".md";
+            String contentBase64 = Base64.getEncoder().encodeToString(article.getContent().getBytes());
+            gitHubUltils.updateRepositoryContent(mdName,contentBase64);
             return ApiResult.success();
         }
         return ApiResult.failure(ApiCode.FAIL);

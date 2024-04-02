@@ -1,4 +1,4 @@
-package com.kintong.blogserver.commons.ultils;
+package com.kintong.blogserver.core.ultils;
 
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;

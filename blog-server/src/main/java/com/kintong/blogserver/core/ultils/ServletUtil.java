@@ -1,4 +1,4 @@
-package com.kintong.blogserver.commons.ultils;
+package com.kintong.blogserver.core.ultils;
 
 import com.kintong.blogserver.commons.consts.HttpStatus;
 import jakarta.servlet.http.HttpServletResponse;
