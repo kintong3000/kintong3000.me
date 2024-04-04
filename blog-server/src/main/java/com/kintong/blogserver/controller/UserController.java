@@ -1,6 +1,6 @@
 package com.kintong.blogserver.controller;
 
-import com.kintong.blogserver.core.ultils.ApiResult;
+import com.kintong.blogserver.commons.ultils.ApiResult;
 import com.kintong.blogserver.entity.dto.Account;
 import com.kintong.blogserver.entity.vo.UserInfoVO;
 import com.kintong.blogserver.service.AccountService;

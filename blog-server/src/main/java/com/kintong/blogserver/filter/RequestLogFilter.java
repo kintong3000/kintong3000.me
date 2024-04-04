@@ -2,7 +2,7 @@ package com.kintong.blogserver.filter;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.kintong.blogserver.commons.consts.Const;
-import com.kintong.blogserver.core.ultils.SnowflakeIdGenerator;
+import com.kintong.blogserver.commons.ultils.SnowflakeIdGenerator;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

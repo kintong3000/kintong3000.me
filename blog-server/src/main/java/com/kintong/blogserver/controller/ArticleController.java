@@ -1,7 +1,7 @@
 package com.kintong.blogserver.controller;
 
 import com.kintong.blogserver.commons.consts.ApiCode;
-import com.kintong.blogserver.core.ultils.ApiResult;
+import com.kintong.blogserver.commons.ultils.ApiResult;
 import com.kintong.blogserver.entity.dto.Article;
 import com.kintong.blogserver.entity.dto.Introduction;
 import com.kintong.blogserver.entity.vo.PageVo;

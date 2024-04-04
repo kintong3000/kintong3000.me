@@ -1,4 +1,4 @@
-package com.kintong.blogserver.core.ultils;
+package com.kintong.blogserver.commons.ultils;
 
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
