@@ -1,5 +1,6 @@
 package com.kintong.blogserver.commons.ultils;
 
+import com.alibaba.fastjson2.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,24 +34,43 @@ public class GitHubUltils {
     private final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     private final OkHttpClient client = new OkHttpClient();
 
-    public void updateRepositoryContent( String path, String contentBase64) {
+    public void updateRepositoryContent(String path, String contentBase64) {
         try {
             String requestUrl = "https://api.github.com/repos/" + githubName + "/" + repository + "/contents/blogs/" + path;
-            String jsonBody = "{\"message\":\"" + commitMessage + "\","
-                    + "\"committer\":{\"name\":\"" + githubName + "\", \"email\":\"" + committerEmail + "\"},"
-                    + "\"content\":\"" + contentBase64 + "\"}";
 
-            RequestBody body = RequestBody.create(jsonBody, JSON);
-            Request request = new Request.Builder()
+            // Initial GET request to check if the file exists
+            Request getRequest = new Request.Builder()
                     .url(requestUrl)
                     .addHeader("Accept", "application/vnd.github+json")
                     .addHeader("Authorization", "Bearer " + token)
-                    .addHeader("X-GitHub-Api-Version", "2022-11-28")
+                    .build();
+
+            String sha = null;
+            try (Response getResponse = client.newCall(getRequest).execute()) {
+                // If file exists, extract the sha value
+                if (getResponse.code() == 200) {
+                    String jsonResponse = getResponse.body().string();
+                    JSONObject jsonObject = com.alibaba.fastjson2.JSON.parseObject(jsonResponse);
+                    sha = jsonObject.getString("sha");
+                }
+            }
+
+            // Prepare the JSON body for the PUT request
+            String jsonBody = "{\"message\":\"" + commitMessage + "\","
+                    + "\"committer\":{\"name\":\"" + githubName + "\", \"email\":\"" + committerEmail + "\"},"
+                    + "\"content\":\"" + contentBase64 + "\"" + (sha != null ? ",\"sha\":\"" + sha + "\"" : "") + "}";
+
+            RequestBody body = RequestBody.create(jsonBody, JSON);
+            Request putRequest = new Request.Builder()
+                    .url(requestUrl)
+                    .addHeader("Accept", "application/vnd.github+json")
+                    .addHeader("Authorization", "Bearer " + token)
                     .put(body)
                     .build();
 
-            try (Response response = client.newCall(request).execute()) {
-                log.info("请求github返回："+response.body().string());
+            // Execute the PUT request
+            try (Response putResponse = client.newCall(putRequest).execute()) {
+                log.info("请求github返回：" + putResponse.body().string());
             }
         } catch (Exception e) {
             e.printStackTrace();
