@@ -8,7 +8,7 @@ const {data} = await useFetch(`/api/blog/article`, {
   method:"GET",
 })
 // @ts-expect-error missing types
-const articleList = data.value.data.items.reverse();
+const articleList = data.value.data.items.slice().reverse();
 
 const getYear = (a: Date | string | number) => new Date(a).getFullYear()
 const isSameYear = (a?: Date | string | number, b?: Date | string | number) => a && b && getYear(a) === getYear(b)
