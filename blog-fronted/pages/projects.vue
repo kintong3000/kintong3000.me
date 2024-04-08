@@ -35,9 +35,9 @@ const parts = computed(() => {
 </script>
 
 <template>
-  <!--  <div class="prose prose-coolgray dark:prose-invert m-auto slide-enter">-->
-  <!--    <h1>coming soon</h1>-->
-  <!--  </div>-->
+    <div class="prose prose-coolgray dark:prose-invert m-auto slide-enter m-b-8">
+      <h1 class="text-center">Projects</h1>
+    </div>
 
   <div grid="~ cols-1 lg:cols-2 xl:cols-3 gap-4">
     <div v-for="(items, idx) in parts" :key="idx" flex="~ col gap-4">

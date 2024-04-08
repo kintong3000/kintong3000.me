@@ -33,7 +33,7 @@ const md = new MarkdownIt()
 const demoItems = [
     {
         url:'https://github.com/kintong3000/kintong3000.me',
-        img: 'https://cdn.jsdelivr.net/gh/kintong3000/Kintong-Image-Hosting@main/img/3f08fe12e2384d5791e6037a4c6af1b1.png~tplv-0es2k971ck-image.png',
+        img: 'https://cdn.jsdelivr.net/gh/kintong3000/Kintong-Image-Hosting@main/img/60c7791ffb4e4f66ad791b3ff7a46b20.png~tplv-0es2k971ck-image.png',
         text: '### 一个简单的个人博客\n' +
             '\n' +
             '- 前端博客展示+后台管理系统\n' +
@@ -44,7 +44,7 @@ const demoItems = [
     },
     {
         url:'https://github.com/kintong3000/linux-ultils-shells',
-        img: 'https://cdn.jsdelivr.net/gh/kintong3000/Kintong-Image-Hosting@main/img/624312b876d54881aff407a4acc09bd4.png~tplv-0es2k971ck-image.png',
+        img: 'https://cdn.jsdelivr.net/gh/kintong3000/Kintong-Image-Hosting@main/img/iShot_2024-04-08_21.21.26.png',
         text: '### Something useful shells for linux\n' +
             '- oh-my-zsh-config.sh\n\n' +
             '- backup.sh'
