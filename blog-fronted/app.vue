@@ -36,6 +36,8 @@ useHead({
 
 
 <style>
-
+html {
+  scroll-behavior: smooth;
+}
 
 </style>
