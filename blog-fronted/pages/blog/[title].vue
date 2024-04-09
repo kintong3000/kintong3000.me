@@ -60,7 +60,6 @@ const contentHtml = md.render(result.content)
     <div
         v-if="result.title"
         class="prose m-auto mb-8"
-        :class="[result.wrapperClass]"
     >
       <h1 class="mb-0 slide-enter-50">
         {{ result.title }}
