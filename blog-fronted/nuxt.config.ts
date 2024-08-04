@@ -53,18 +53,14 @@ export default defineNuxtConfig({
 
     },
     nitro: {
-        // routeRules: {
-        //     '/api/**': {
-        //         proxy: `${process.env.API_URL || 'http://localhost:8080'}/api/**`
-        //     }
-        // }
-        // prerender: {
-        //     routes: [
-        //         '/**',
-        //     ],
-        // },
-        preset: 'vercel'
+    prerender: {
+      routes: [
+        '/api/blogs',
+      ],
     },
+    // Ensure the projects folder is included in the build
+    include: ['content'],
+  },
 
     // ssr: false,
     routeRules: {
