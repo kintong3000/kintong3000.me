@@ -58,11 +58,11 @@ export default defineNuxtConfig({
         //         proxy: `${process.env.API_URL || 'http://localhost:8080'}/api/**`
         //     }
         // }
-        prerender: {
-            routes: [
-                '/**',
-            ],
-        },
+        // prerender: {
+        //     routes: [
+        //         '/**',
+        //     ],
+        // },
     },
 
     // ssr: false,
