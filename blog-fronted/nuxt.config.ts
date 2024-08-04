@@ -67,9 +67,9 @@ export default defineNuxtConfig({
     },
 
     // ssr: false,
-    // routeRules: {
-    //     '/**': { isr: 600 },
-    // },
+    routeRules: {
+        '/**': { prerender: true },
+    },
 
 
     devtools: {enabled: true},
