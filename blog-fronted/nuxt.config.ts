@@ -55,7 +55,7 @@ export default defineNuxtConfig({
     nitro: {
     prerender: {
       routes: [
-        '/api/blogs',
+        '/api/article',
       ],
     },
     // Ensure the projects folder is included in the build
