@@ -10,9 +10,9 @@ export default defineNuxtConfig({
         // public: {
         //     API_URL:process.env.API_URL
         // }
-        public: {
-            apiUrl: process.env.API_URL || 'http://localhost:8080'
-        }
+        // public: {
+        //     apiUrl: process.env.API_URL || 'http://localhost:8080'
+        // }
 
     },
     vite: {
@@ -53,17 +53,22 @@ export default defineNuxtConfig({
 
     },
     nitro: {
-        routeRules: {
-            '/api/**': {
-                proxy: `${process.env.API_URL || 'http://localhost:8080'}/api/**`
-            }
-        }
+        // routeRules: {
+        //     '/api/**': {
+        //         proxy: `${process.env.API_URL || 'http://localhost:8080'}/api/**`
+        //     }
+        // }
+        prerender: {
+            routes: [
+                '/api/blog/article',
+            ],
+        },
     },
 
     // ssr: false,
-    routeRules: {
-        '/**': { isr: 600 },
-    },
+    // routeRules: {
+    //     '/**': { isr: 600 },
+    // },
 
 
     devtools: {enabled: true},

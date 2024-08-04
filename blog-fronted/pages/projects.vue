@@ -1,37 +1,36 @@
 <script setup lang="ts">
-import {breakpointsTailwind} from '@vueuse/core'
-import demoItems from '@/projects/data'
+import { useFetch } from 'nuxt/app';
+import { ref, computed, onMounted } from 'vue';
+import { useBreakpoints, breakpointsTailwind } from '@vueuse/core';
 
-const breakpoints = useBreakpoints(breakpointsTailwind)
-const cols = ref(3)
+const breakpoints = useBreakpoints(breakpointsTailwind);
+const cols = ref(3);
 
+const { data, error } = await useFetch('/api/project/list', {
+  method: 'GET',
+});
+
+// @ts-expect-error missing types
+const projectList = data.value?.data.items || [];
+console.log(projectList)
 // Use onMounted lifecycle hook to update cols based on actual viewport size after hydration
 onMounted(() => {
   if (breakpoints.xl.value) {
-    cols.value = 3
+    cols.value = 3;
   } else if (breakpoints.lg.value) {
-    cols.value = 2
+    cols.value = 2;
   } else {
-    cols.value = 1
+    cols.value = 1;
   }
-})
-
-// const cols = computed(() => {
-//   if (breakpoints.xl.value)
-//     return 3
-//   if (breakpoints.lg.value)
-//     return 2
-//   return 1
-// })
-
+});
 
 const parts = computed(() => {
-  const result = Array.from({length: cols.value}, () => [] as typeof demoItems)
-  demoItems.forEach((item, i) => {
-    result[i % cols.value].push(item)
-  })
-  return result
-})
+  const result = Array.from({ length: cols.value }, () => [] as typeof projectList);
+  projectList.forEach((item, i) => {
+    result[i % cols.value].push(item);
+  });
+  return result;
+});
 </script>
 
 <template>
@@ -41,7 +40,7 @@ const parts = computed(() => {
 
   <div grid="~ cols-1 lg:cols-2 xl:cols-3 gap-4">
     <div v-for="(items, idx) in parts" :key="idx" flex="~ col gap-4">
-      <div v-for="{ text, url, img } of items">
+      <div v-for="{ contentRendered, url, img } of items">
         <a
             border="~ base rounded-lg" block of-hidden
             class="group"
@@ -52,7 +51,7 @@ const parts = computed(() => {
           <img :src="img" alt="Girl in a jacket" w-full autoplay loop muted playsinline border="b base">
 
           <div class="prose prose-base p4 m0 pb3">
-            <div class="slide-enter-content" v-html="text"></div>
+            <div class="slide-enter-content" v-html="contentRendered"></div>
           </div>
         </a>
       </div>

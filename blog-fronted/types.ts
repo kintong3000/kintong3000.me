@@ -1,7 +1,7 @@
 export interface Post {
     id: number
     title: string
-    createTime: string
+    date: string
     urlName:string
 }
 

@@ -8,14 +8,10 @@ import anchor from 'markdown-it-anchor'
 // @ts-expect-error missing types
 import TOC from 'markdown-it-table-of-contents'
 import MarkdownItGitHubAlerts from 'markdown-it-github-alerts'
-
 import 'markdown-it-github-alerts/styles/github-colors-light.css'
 import 'markdown-it-github-alerts/styles/github-colors-dark-class.css'
 import 'markdown-it-github-alerts/styles/github-base.css'
-
-import { preWrapperPlugin } from '~/composables/preWrapper'
-
-import config from "~/config/fetchConfig";
+import {preWrapperPlugin} from '~/composables/preWrapper'
 
 
 const md = new MarkdownIt()
@@ -28,28 +24,29 @@ md.use(await Shiki({
 
 }))
 
-md.use(TOC,{
+md.use(TOC, {
   includeLevel: [1, 2, 3, 4],
   containerHeaderHtml: '<div class="table-of-contents-anchor"><div class="i-material-symbols:content-paste-sharp w-1em h-1em"></div>Contents</div>'
 })
 md.use(anchor)
 md.use(MarkdownItGitHubAlerts)
-md.use(preWrapperPlugin,false)
+md.use(preWrapperPlugin, false)
 const route = useRoute()
 
 const runtimeconfig = useRuntimeConfig()
-const {data,error} = await useFetch(`/api/blog/article/${route.params.title}`, {
-  method:"GET",
+const {data, error} = await useFetch(`/api/article/${route.params.title}`, {
+  method: "GET",
   // baseURL:runtimeconfig.public.apiUrl,
 })
-if (error.value){
+if (error.value) {
   console.log(error.value)
 }
 
 // @ts-expect-error missing types
-const result = data.value.data
-const contentHtml = md.render(result.content)
+const result = data.value?.data;
 
+const frontmatter = result?.frontmatter;
+const contentHtml = result ? md.render(result.content) : '<p>Content not found</p>';
 
 
 </script>
@@ -58,17 +55,17 @@ const contentHtml = md.render(result.content)
 
   <div class="prose prose-coolgray dark:prose-invert m-auto ">
     <div
-        v-if="result.title"
+        v-if="frontmatter.title"
         class="prose m-auto mb-8"
     >
       <h1 class="mb-0 slide-enter-50">
-        {{ result.title }}
+        {{ frontmatter.title }}
       </h1>
       <p
-          v-if="result.createTime"
+          v-if="frontmatter.date"
           class="opacity-50 !-mt-6 slide-enter-60"
       >
-        {{ formatDate(result.createTime, false) }}
+        {{ formatDate(frontmatter.date, false) }}
       </p>
 
     </div>

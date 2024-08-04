@@ -33,7 +33,7 @@ const route = useRoute()
 
 const runtimeconfig = useRuntimeConfig()
 
-const {data} = await useFetch(`/api/blog/introduction`, {
+const {data} = await useFetch(`/api/article/introduction`, {
   method:"GET",
   // baseURL:runtimeconfig.public.apiUrl,
   key:"1"
@@ -49,7 +49,8 @@ const result = data.value.data
 //   }
 // }, { immediate: true })
 
-const contentHtml = md.render(result.content)
+const frontmatter = result?.frontmatter;
+const contentHtml = result ? md.render(result.content) : '<p>Content not found</p>';
 
 </script>
 
@@ -57,12 +58,12 @@ const contentHtml = md.render(result.content)
   <div class="bg-color-flow "></div>
   <div class="prose prose-coolgray dark:prose-invert m-auto ">
     <div
-        v-if="result.title"
+        v-if="frontmatter.title"
         class="prose m-auto mb-8"
-        :class="[result.wrapperClass]"
+        :class="[frontmatter.wrapperClass]"
     >
       <h1 class="mb-0 slide-enter-50 clip">
-        {{ result.title }}
+        {{ frontmatter.title }}
       </h1>
     </div>
     <article class="text-xl ">
