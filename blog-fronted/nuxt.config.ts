@@ -63,6 +63,7 @@ export default defineNuxtConfig({
         //         '/**',
         //     ],
         // },
+        preset: 'vercel'
     },
 
     // ssr: false,
@@ -85,7 +86,7 @@ export default defineNuxtConfig({
         '@pinia/nuxt',
         '@unocss/nuxt',
         '@vueuse/nuxt',
-        '@element-plus/nuxt',
+
     ],
 
 
