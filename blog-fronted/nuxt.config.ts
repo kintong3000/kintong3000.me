@@ -60,7 +60,7 @@ export default defineNuxtConfig({
         // }
         prerender: {
             routes: [
-                '/api',
+                '/**',
             ],
         },
     },
