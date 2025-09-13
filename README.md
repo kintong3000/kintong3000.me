@@ -1,148 +1,100 @@
-# 个人博客项目
+# 个人博客网站
 
-这是一个功能完善的全栈个人博客系统，采用前后端分离的现代架构。项目包含三个核心模块：后端API服务、前端用户界面和后台管理面板。
-
-页面样式,架构参考自[antfu.me](https://github.com/antfu/antfu.me)
-
-**Shout out to Anthony Fu.**
+这是一个基于 Vue 3 和 Vite 构建的现代化、高性能静态博客网站。
 
 ## ✨ 功能特性
-- **🚀 极致性能与体验**：采用 Nuxt.js 构建，通过 ISR (增量静态再生) 技术，为用户带来静态站点的秒开速度和动态内容的实时更新。
+- **📄 Markdown 驱动** - 博客文章和页面内容均由 Markdown 文件生成。
+- **🚀 静态站点生成 (SSG)** - 通过 `vite-ssg` 预渲染网站为静态 HTML，带来极致的加载速度和优秀的 SEO。
+- **☁️ 自动化部署** - 可免费部署在 [Vercel](https://vercel.com/) 等平台，提交代码即可自动更新线上页面。
 
-- **🤖 SEO 友好**：所有页面预渲染为静态 HTML，对搜索引擎天然友好，轻松获得更高排名。
+## 🛠️ 技术栈
 
-- **✍️ 内容即代码** (Content-as-Code)：文章内容直接与指定的 GitHub 仓库同步，享受 Git 带来的版本控制、协作和备份优势。
+- **框架:** [Vue 3](https://vuejs.org/)
+- **构建工具:** [Vite](https://vitejs.dev/)
+- **路由:** [vue-router](https://router.vuejs.org/) + [unplugin-vue-router](https://github.com/posva/unplugin-vue-router)
+- **CSS:** [UnoCSS](https://github.com/unocss/unocss)
+- **Markdown 解析:** [unplugin-vue-markdown](https://github.com/unplugin/unplugin-vue-markdown)
+- **静态站点生成 (SSG):** [vite-ssg](https://github.com/antfu/vite-ssg)
+- **组件/API 自动导入:**
+  - [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)
+  - [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import)
 
-- **🔄 自动同步至Github备份**：发布新文章或更新内容自动同步至 GitHub。
+## 📂 项目结构
 
-- **💰 成本效益**：相比传统的 SSR (服务器端渲染)，ISR 极大降低了服务器的实时计算压力，有效节约了服务器成本。
-
-- **🎨 现代技术栈**：基于 Vue/Nuxt/spring 生态，提供流畅的开发体验和丰富的扩展可能性。
-
-- **🔩 前后端分离**：独立的后台管理系统，让内容管理与前端展示完全解耦，架构清晰，易于维护。
-
-- **📝 Markdown 编辑器**: 后台提供 Markdown 编辑器用于撰写文章。
-
-
-
-## 项目架构
-
-本项目由三个独立的子项目组成：
-
--   **`blog-server`**: 后端服务，基于 Java 和 Spring Boot 构建，提供 RESTful API 接口，负责所有业务逻辑、数据处理和持久化。
--   **`blog-fronted`**: 前端展示系统，基于 Nuxt.js 3 构建，为访问者提供美观、高性能的博客文章阅读体验。
--   **`blog-admin`**: 后台管理系统，基于 Vue.js 3 和 Vite 构建，提供一个内容管理后台，方便博主进行文章发布、用户管理等操作。
-
-它们之间的交互关系如下：
 ```
-(用户) --> blog-fronted (Nuxt.js) --> blog-server (Spring Boot API) --> 数据库
-                                          ^
-(管理员) --> blog-admin (Vue.js) -----------|
+.
+├── pages/                  # 页面和路由组件
+│   ├── index.md            # 网站首页
+│   └── blogs/              # 博客文章目录
+│       ├── index.md        # 博客列表页
+│       └── *.md            # 具体的博客文章
+├── src/
+│   ├── App.vue             # Vue 应用根组件
+│   ├── main.js             # 应用入口文件
+│   ├── components/         # 全局 Vue 组件
+│   └── styles/             # 全局样式
+├── uno.config.ts           # UnoCSS 配置文件
+└── vite.config.js          # Vite 配置文件
 ```
 
----
+## 🚀 本地开发
 
-## 技术栈
+**环境要求:**
 
-### 后端 (`blog-server`)
+- [Node.js](http://nodejs.org/) >= 18
+- [pnpm](https://pnpm.io/)
 
--   **语言**: Java
--   **框架**: Spring Boot
--   **数据库 ORM**: MyBatis-Plus
--   **安全认证**: Spring Security + JWT (JSON Web Tokens)
--   **构建工具**: Maven
--   **数据库**: MySQL (或其他关系型数据库)
+**步骤:**
 
-### 前端 (`blog-fronted`)
-
--   **框架**: Nuxt.js 3
--   **语言**: TypeScript
--   **UI & 样式**: UnoCSS
--   **构建工具**: Vite
-
-### 后台管理 (`blog-admin`)
-
--   **框架**: Vue.js 3
--   **语言**: JavaScript
--   **构建工具**: Vite
--   **路由**: Vue Router
--   **UI & 样式**: UnoCSS
-
----
-## 部分页面展示
-
-### 部分界面
-![CleanShot 2024-03-13 at 14.55.04@2x](https://cdn.jsdelivr.net/gh/kintong3000/Kintong-Image-Hosting@main/img/CleanShot%202024-03-13%20at%2014.55.04@2x.png)
-![CleanShot 2024-03-13 at 14.56.03@2x](https://cdn.jsdelivr.net/gh/kintong3000/Kintong-Image-Hosting@main/img/CleanShot%202024-03-13%20at%2014.56.03@2x.png)
-![CleanShot 2024-03-13 at 14.56.47@2x](https://cdn.jsdelivr.net/gh/kintong3000/Kintong-Image-Hosting@main/img/CleanShot%202024-03-13%20at%2014.56.47@2x.png)
-![CleanShot 2024-03-13 at 14.57.29@2x](https://cdn.jsdelivr.net/gh/kintong3000/Kintong-Image-Hosting@main/img/CleanShot%202024-03-13%20at%2014.57.29@2x.png)
-![CleanShot 2024-03-13 at 14.58.28@2x](https://cdn.jsdelivr.net/gh/kintong3000/Kintong-Image-Hosting@main/img/CleanShot%202024-03-13%20at%2014.58.28@2x.png)
-
----
-
-## 快速开始
-
-### 环境准备
-
-在开始之前，请确保你的开发环境中安装了以下软件：
-
--   JDK 17 或更高版本
--   Maven 3.6+
--   Node.js 18+
--   pnpm
--   MySQL 8.0+ (或其他兼容的数据库)
-
-### 数据库设置
-
-1.  创建一个新的数据库 (例如 `my_blog`)。
-2.  依次导入项目根目录下的 SQL 文件来创建所需的数据表：
-    -   `account.sql`
-    -   `article.sql`
-    -   `introduction.sql`
-
-### 后端 (`blog-server`)
-
-1.  **进入目录**:
+1.  **克隆仓库**
     ```bash
-    cd blog-server
+    git clone https://github.com/your-repo/kintong3000.me.git
+    cd kintong3000.me
     ```
-2.  **配置数据库**:
-    修改 `src/main/resources/application-dev.yml` 文件，更新 `spring.datasource` 部分的数据库连接信息（URL, username, password）。
-3.  **启动服务**:
-    ```bash
-    mvn spring-boot:run
-    ```
-    服务默认将在 `http://localhost:8080` 启动。
 
-### 前端 (`blog-fronted`)
-
-1.  **进入目录**:
-    ```bash
-    cd blog-fronted
-    ```
-2.  **安装依赖**:
+2.  **安装依赖**
     ```bash
     pnpm install
     ```
-3.  **启动开发服务器**:
+
+3.  **启动开发服务器**
+    此命令会启动一个热重载的开发服务器，访问地址通常是 `http://localhost:5173`。
     ```bash
     pnpm dev
     ```
-    前端应用将在 `http://localhost:3000` (或其他可用端口) 启动。
 
-### 后台管理 (`blog-admin`)
+4.  **构建项目**
+    此命令会将整个网站构建成静态文件，输出到 `dist/` 目录。
+    ```bash
+    pnpm build
+    ```
 
-1.  **进入目录**:
+5.  **本地预览构建结果**
+    此命令可以在本地启动一个服务器来预览 `dist/` 目录中的静态文件。
     ```bash
-    cd blog-admin
+    pnpm preview
     ```
-2.  **安装依赖**:
-    ```bash
-    pnpm install
-    ```
-3.  **启动开发服务器**:
-    ```bash
-    pnpm dev
-    ```
-    后台管理面板将在 `http://localhost:5173` (或 Vite 指定的其他端口) 启动。
 
+## 🏛️ 架构
+
+本项目的核心是**静态站点生成 (SSG)** 架构与 **Vercel** 平台的自动化部署流程（CI/CD）的结合。
+
+这使得开发者只需专注于内容创作，其余的构建和部署工作将自动完成。
+
+### 静态站点生成 (SSG) 工作流
+
+当执行 `pnpm build` 命令时，项目会将代码和 Markdown 内容转换为一个完整的、纯静态的网站。这个过程如下：
+
+1.  **内容扫描**：`unplugin-vue-router` 插件扫描 `pages/` 目录的结构，并自动生成对应的网站路由。
+2.  **内容转换**：`unplugin-vue-markdown` 插件读取所有 `.md` 文件，将其内容转换为 Vue 组件。
+3.  **页面预渲染**：`vite-ssg` 工具会模拟访问网站的每一个页面，执行对应的 Vue 组件，并将最终渲染结果捕获为纯粹的 HTML 文件。
+4.  **产物输出**：所有生成的 HTML、CSS 和 JavaScript 文件被统一输出到 `dist/` 目录。这个目录包含了整个可部署的网站。
+
+### Vercel 自动化部署流程
+
+当项目与 Vercel 关联后，每一次代码提交都会触发一次自动化的部署：
+
+1.  **本地提交**：您在本地修改代码或在 `pages/` 目录下更新文章，然后使用 `git push` 将变更推送到 GitHub 仓库。
+2.  **触发部署**：GitHub 通过 Webhook 自动通知 Vercel 代码有更新。
+3.  **云端构建**：Vercel 收到通知后，会拉取最新的代码，并自动执行 `pnpm build` 命令，在云端完成上述的 SSG 构建流程。
+4.  **原子化部署**：构建成功后，Vercel 会将生成的 `dist/` 目录部署到其全球 CDN 网络，并瞬间将您的域名指向这个最新版本，整个过程平滑且无中断。
