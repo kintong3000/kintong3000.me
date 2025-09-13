@@ -2,11 +2,6 @@
 
 This is a modern, high-performance static blog website built with Vue 3 and Vite.
 
-
-Page style, architecture reference from [antfu.me] (https://github.com/antfu/antfu.me)
-
-**Shout out to Anthony Fu.**
-
 ## ✨ Features
 
 - **📄 Markdown Driven** - Blog posts and page content are generated from Markdown files.
