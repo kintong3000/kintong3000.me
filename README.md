@@ -2,6 +2,10 @@
 
 这是一个基于 Vue 3 和 Vite 构建的现代化、高性能静态博客网站。
 
+页面样式,架构参考自[antfu.me](https://github.com/antfu/antfu.me)
+
+**Shout out to Anthony Fu.**
+
 ## ✨ 功能特性
 - **📄 Markdown 驱动** - 博客文章和页面内容均由 Markdown 文件生成。
 - **🚀 静态站点生成 (SSG)** - 通过 `vite-ssg` 预渲染网站为静态 HTML，带来极致的加载速度和优秀的 SEO。
