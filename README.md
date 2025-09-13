@@ -8,14 +8,14 @@
 
 ## ✨ 功能特性
 
--   **服务端渲染 (SSR)**: 基于 Nuxt 3 的强大功能，网站内容在服务器端预先渲染，极大地提升了首次加载速度和 SEO 效果。
+-   **静态站点生成 (SSG)**: 基于 Nuxt 3 的强大功能，所有页面在构建时预先渲染成静态 HTML，提供了极致的加载速度和优秀的 SEO 效果。
 -   **博客系统**: 支持 Markdown 文件渲染。
 -   **内置 API**: 使用 Nuxt 3 服务端引擎提供文章和项目列表接口。
 -   **支持自动化部署**:可免费部署在 Vercel 等平台，提交代码即可自动更新线上页面。
 
 ## 🛠️ 技术栈
 
--   **框架**: [Nuxt.js 3](https://nuxt.com/) (SSR 模式)
+-   **框架**: [Nuxt.js 3](https://nuxt.com/) (SSG 模式)
 -   **样式**: [UnoCSS](https://unocss.dev/)
 
 ## 🚀 本地开发
@@ -26,7 +26,7 @@
 
 ```bash
 git clone <your-repo-url>
-cd kintong3000.me/blog-fronted
+cd kintong3000.me
 ```
 
 **2. 安装依赖**

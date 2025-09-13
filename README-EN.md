@@ -8,14 +8,14 @@ The page style and architecture are inspired by [antfu.me](https://github.com/an
 
 ## ✨ Features
 
--   **Server-Side Rendering (SSR)**: Built on the powerful features of Nuxt 3, the website content is pre-rendered on the server, significantly improving initial load speed and SEO performance.
+-   **Static Site Generation (SSG)**: Based on the power of Nuxt 3, all pages are pre-rendered as static HTML at build time, providing extreme loading speed and excellent SEO results.  
 -   **Blog System**: Supports rendering from Markdown files.
 -   **Built-in API**: Uses the Nuxt 3 server engine to provide endpoints for article and project lists.
 -   **Automated Deployment**: Can be deployed for free on platforms like Vercel, allowing automatic updates upon code commits.
 
 ## 🛠️ Tech Stack
 
--   **Framework**: [Nuxt.js 3](https://nuxt.com/) (SSR Mode)
+-   **Framework**: [Nuxt.js 3](https://nuxt.com/) (SSG Mode)
 -   **Styling**: [UnoCSS](https://unocss.dev/)
 
 ## 🚀 Local Development
@@ -26,7 +26,7 @@ Please ensure you have [Node.js](https://nodejs.org/) (version >= 18 recommended
 
 ```bash
 git clone <your-repo-url>
-cd kintong3000.me/blog-fronted
+cd kintong3000.me
 ```
 
 **2. Install Dependencies**
