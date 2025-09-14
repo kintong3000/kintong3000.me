@@ -23,6 +23,7 @@ declare module 'vue' {
     SkillIconsDiscord: typeof import('./src/components/icons/SkillIconsDiscord.vue')['default']
     SkillIconsGithubDark: typeof import('./src/components/icons/SkillIconsGithubDark.vue')['default']
     SkillIconsGithubLight: typeof import('./src/components/icons/SkillIconsGithubLight.vue')['default']
+    TagButton: typeof import('./src/components/TagButton.vue')['default']
     ToggleDarkSwitch: typeof import('./src/components/toggleDarkSwitch.vue')['default']
     VPIconMoon: typeof import('./src/components/icons/VPIconMoon.vue')['default']
     VPIconSun: typeof import('./src/components/icons/VPIconSun.vue')['default']

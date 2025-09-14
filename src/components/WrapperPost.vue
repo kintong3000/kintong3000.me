@@ -4,13 +4,11 @@ import 'markdown-it-github-alerts/styles/github-colors-light.css'
 import 'markdown-it-github-alerts/styles/github-colors-dark-class.css'
 import 'markdown-it-github-alerts/styles/github-base.css'
 import {formatDate} from "../../composables/formatDate";
+import type {Frontmatter} from "@/types";
 
-const { frontmatter } = defineProps({
-  frontmatter: {
-    type: Object,
-    required: true,
-  },
-})
+const { frontmatter } = defineProps<{
+  frontmatter: Frontmatter
+}>()
 const router = useRouter()
 const content = ref<HTMLDivElement>()
 const route = useRoute()
@@ -94,7 +92,12 @@ onMounted(() => {
       >
         {{ formatDate(frontmatter.date, false) }}
       </p>
-
+      <div
+          v-if="frontmatter.tags"
+          class="tags slide-enter-70"
+      >
+        <span v-for="tag in frontmatter.tags" :key="tag" class="tag-item">{{ tag }}</span>
+      </div>
     </div>
     <article class="text-base ">
       <div class="slide-enter-content" >
@@ -117,5 +120,16 @@ onMounted(() => {
 </template>
 
 <style scoped>
-
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: -1rem;
+}
+.tag-item {
+  padding: 0.1rem 0.4rem;
+  font-size: 0.8rem;
+  border-radius: 0.25rem;
+  background-color: #f0f0f0;
+  color: #555;
+}
 </style>
