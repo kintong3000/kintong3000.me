@@ -1,18 +1,14 @@
 <script setup lang="ts">
 
-import {formatDate} from "../../composables/formatDate";
+import {useDark} from "@vueuse/core";
 
-const { frontmatter } = defineProps({
-  frontmatter: {
-    type: Object,
-    required: true,
-  },
-})
+const isDark = useDark();
 
 </script>
 
 <template>
-  <div class="bg-color-flow "></div>
+  <!--  <div class="bg-color-flow "></div>-->
+
   <div class="prose prose-coolgray dark:prose-invert m-auto ">
     <div
         class="prose m-auto mb-8"
@@ -22,12 +18,12 @@ const { frontmatter } = defineProps({
         <span>I am </span>
         <span class="mb-0 slide-enter-50 clip">Kintong Cheung</span>
       </h1>
-
+      <h1 v-show="isDark"> May these lights guide you on your path </h1>
     </div>
 
     <article class="text-base ">
-      <div class="slide-enter-content" >
-        <slot />
+      <div class="slide-enter-content">
+        <slot/>
       </div>
 
     </article>
@@ -50,10 +46,12 @@ const { frontmatter } = defineProps({
   //left: 50%;
 }
 
-.clip{
+.clip {
   background: var(--vp-home-hero-name-background);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: var(--vp-home-hero-name-color);
 }
+
+
 </style>

@@ -7,15 +7,6 @@
           <!--        <router-link class="w-12 h-12 absolute xl:fixed m-5 select-none outline-none" to="/">-->
           <logo/>
         </RouterLink>
-        <button
-            title="Scroll to top"
-            fixed right-3 bottom-3 w-10 h-10 hover:op100 rounded-full
-            hover-bg-hex-8883 transition duration-300 z-100 print:hidden bg-transparent border-0
-            :class="scroll > 300 ? 'op30 scroll-to-top ' : 'op0! pointer-events-none  scroll-to-top' "
-            @click="toTop()"
-        >
-          <div class="i-material-symbols:arrow-upward-rounded w-1em h-1em"></div>
-        </button>
 
         <div class="spacer"/>
         <div class="right">
@@ -52,6 +43,15 @@
 
   </header>
   <div class="h-16"></div>
+  <button
+      title="Scroll to top"
+      class="fixed right-3 bottom-3 w-10 h-10 hover:op100 rounded-full
+      hover-bg-hex-8883 transition duration-300 z-100 print:hidden bg-transparent border-0"
+      :class="scroll > 300 ? 'op30 scroll-to-top ' : 'op0! pointer-events-none  scroll-to-top' "
+      @click="toTop()"
+  >
+    <div class="i-material-symbols:arrow-upward-rounded w-1em h-1em"></div>
+  </button>
 </template>
 
 <script  lang="ts" setup>
@@ -139,13 +139,30 @@ onBeforeUnmount(() => {
 @media (min-width: 960px) {
   .nav {
     background-color: transparent;
+    transition: background-color 0.3s, border-color 0.3s;
   }
 
   .nav:not(.top) {
-    background-color: var(--c-bg);
-    border-bottom-color: var(--vp-c-divider);
+    background-color: hsla(0, 0%, 100%, 0.5); /* 亮色模式下的半透明背景 */
 
+    -webkit-backdrop-filter: blur(12px); /* 兼容旧版 Safari */
+    backdrop-filter: blur(12px); /* 关键属性，数值越大越模糊 */
+
+    border-bottom-color: var(--vp-c-divider);
   }
+}
+
+.dark .nav:not(.top) {
+  background-color: rgba(30, 30, 30, 0.5); /* 暗色模式下的半透明背景 */
+}
+
+
+html:not(.dark) .icon2 {
+  display: none;
+}
+
+.dark .icon1 {
+  display: none;
 }
 
 html:not(.dark) .icon2 {
