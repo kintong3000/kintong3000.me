@@ -13,16 +13,16 @@ import './styles/main.css'
 import './styles/prose.css'
 import './styles/markdown.css'
 import './styles/rainbow.css'
-
 import 'uno.css'
-
+import './styles/globals.css'
 import { routes } from "vue-router/auto-routes"
 import { ViteSSG } from 'vite-ssg'
 import dayjs from 'dayjs'
 import LocalizedFormat from 'dayjs/plugin/localizedFormat.js'
 
 import App from './App.vue'
-
+// import '@unocss/reset/tailwind.css'
+// import '@unocss/reset/tailwind-compat.css'
 // createApp(App).mount('#app')
 
 

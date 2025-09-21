@@ -8,7 +8,13 @@ import {useDark} from "@vueuse/core";
 
 const route = useRoute()
 const isHomePage = computed(() => route.name === '/')
-const isDark = useDark();
+// const isDark = useDark();
+const isDark = useDark({
+  selector: 'html',
+  attribute: 'data-kb-theme',
+  valueDark: 'dark',
+  valueLight: 'light',
+})
 const raysColor = computed(() => (isDark.value ? '#ffffff' : '#ffffff'));
 </script>
 

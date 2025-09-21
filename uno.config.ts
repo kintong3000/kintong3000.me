@@ -5,14 +5,40 @@ import {
     presetTypography,
     presetUno,
     transformerDirectives,
-    presetWind,
     presetIcons,
     presetWebFonts
 } from 'unocss'
+import presetAnimations from "unocss-preset-animations";
+import { presetShadcn } from "unocss-preset-shadcn";
+// import { presetShadcn } from "./preset.shadcn"
+import presetWind4 from '@unocss/preset-wind4'
 
 export default defineConfig({
+    theme: {
+        spacing: {
+            1: '0.25rem',
+            2: '0.5rem',
+            3: '0.75rem',
+            4: '1rem',
+            // ...
+        },
+    },
     presets: [
-        presetWind(),
+        presetWind4(),
+        presetAnimations(),
+        presetShadcn(
+            {
+                color: "red",
+                // With default setting for SolidUI, you need to set the darkSelector option.
+                darkSelector: '[data-kb-theme="dark"]',
+            },
+            {
+                // If you are using reka ui.
+                componentLibrary: "reka",
+            },
+
+        ),
+        // presetShadcn(),
         presetIcons({
             extraProperties: {
                 'display': 'inline-block',
@@ -39,4 +65,14 @@ export default defineConfig({
     safelist: [
         'i-material-symbols:content-paste-sharp',
     ],
+    content: {
+        pipeline: {
+            include: [
+                // the default
+                /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
+                // include js/ts files
+                "(components|src)/**/*.{js,ts}",
+            ],
+        },
+    },
 })
