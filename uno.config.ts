@@ -3,7 +3,7 @@ import { defineConfig } from 'unocss'
 import {
     presetAttributify,
     presetTypography,
-    presetUno,
+    // presetUno,
     transformerDirectives,
     presetIcons,
     presetWebFonts
@@ -24,20 +24,15 @@ export default defineConfig({
         },
     },
     presets: [
-        presetWind4(),
         presetAnimations(),
         presetShadcn(
             {
-                color: "red",
-                // With default setting for SolidUI, you need to set the darkSelector option.
-                darkSelector: '[data-kb-theme="dark"]',
-            },
-            {
-                // If you are using reka ui.
-                componentLibrary: "reka",
-            },
-
+                color: "neutral",
+                darkSelector: '.dark',
+            }
         ),
+        presetWind4(),
+
         // presetShadcn(),
         presetIcons({
             extraProperties: {
@@ -48,7 +43,7 @@ export default defineConfig({
             },
         }),
         presetAttributify(), // 使用attribute模式时必须
-        presetUno(), // 必须
+        // presetUno(),
         presetTypography(),
         presetWebFonts({
             fonts: {

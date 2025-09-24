@@ -63,7 +63,7 @@ function onChange(event, item) {
   cursor: pointer;
   user-select: none;
   padding: 2px 12px;
-  background-color: rgba(0, 0, 0, 0.16);
+  background-color: hsl(0, 0%, 10%);
   border-radius: 8px;        /* 改成统一的圆角 */
   color: rgba(255, 255, 255, 0.7);
   transition: color 300ms cubic-bezier(0.25, 0.8, 0.25, 1),
@@ -129,5 +129,4 @@ function onChange(event, item) {
       rgba(0, 0, 0, 0.15) 0px 3px 6px 2px;
 }
 
-/* 纵向链式圆角在横排/换行下不再适用，删除相关 :first-of-type/:last-of-type 规则 */
 </style>
