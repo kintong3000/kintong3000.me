@@ -13,6 +13,12 @@
           <RouterLink to="/blogs">
             Blog
           </RouterLink>
+
+          <div class="divider"></div>
+
+          <RouterLink to="/library">
+            Library
+          </RouterLink>
 <!--          <RouterLink to="/projects">-->
 <!--            Projects-->
 <!--          </RouterLink>-->

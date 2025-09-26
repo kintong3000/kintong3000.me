@@ -51,6 +51,7 @@ declare module 'vue' {
     Logo: typeof import('./src/components/logo.vue')['default']
     LogosTelegram: typeof import('./src/components/icons/LogosTelegram.vue')['default']
     MarkdownPreview: typeof import('./src/components/MarkdownPreview.vue')['default']
+    NavItem: typeof import('./src/components/NavItem.vue')['default']
     NavMain: typeof import('./src/components/NavMain.vue')['default']
     NavProjects: typeof import('./src/components/NavProjects.vue')['default']
     NavUser: typeof import('./src/components/NavUser.vue')['default']

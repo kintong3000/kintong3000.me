@@ -59,6 +59,14 @@ export default defineConfig({
     ],
     safelist: [
         'i-material-symbols:content-paste-sharp',
+        'i-streamline:markdown-document-programming-solid',
+        'i-streamline:convert-pdf-2-solid',
+        'i-streamline:folder-add-solid',
+        'i-lucide:x',
+        'i-lucide:download',
+        'i-lucide:zoom-in',
+        'i-lucide:zoom-out',
+        'i-lucide:maximize',
     ],
     content: {
         pipeline: {

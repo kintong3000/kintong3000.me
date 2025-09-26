@@ -1,12 +1,7 @@
 <script setup lang="ts">
 import type { SidebarProps } from '@/components/ui/sidebar'
-import { GalleryVerticalEnd, Minus, Plus } from "lucide-vue-next"
-import SearchForm from '@/components/SearchForm.vue'
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from '@/components/ui/collapsible'
+import { GalleryVerticalEnd } from "lucide-vue-next"
+import NavItem from '@/components/NavItem.vue'
 import {
   Sidebar,
   SidebarContent,
@@ -15,155 +10,42 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
-
   SidebarRail,
 } from '@/components/ui/sidebar'
+import { useDocPreview } from '@/composables/useDocPreview'
 
 const props = withDefaults(defineProps<SidebarProps>(), {
   variant: "floating",
 })
-// This is sample data.
-const data = {
-  navMain: [
-    {
-      title: "Getting Started",
-      url: "#",
-      items: [
-        {
-          title: "Installation",
-          url: "#",
-        },
-        {
-          title: "Project Structure",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Building Your Application",
-      url: "#",
-      items: [
-        {
-          title: "Routing",
-          url: "#",
-        },
-        {
-          title: "Data Fetching",
-          url: "#",
-          isActive: true,
-        },
-        {
-          title: "Rendering",
-          url: "#",
-        },
-        {
-          title: "Caching",
-          url: "#",
-        },
-        {
-          title: "Styling",
-          url: "#",
-        },
-        {
-          title: "Optimizing",
-          url: "#",
-        },
-        {
-          title: "Configuring",
-          url: "#",
-        },
-        {
-          title: "Testing",
-          url: "#",
-        },
-        {
-          title: "Authentication",
-          url: "#",
-        },
-        {
-          title: "Deploying",
-          url: "#",
-        },
-        {
-          title: "Upgrading",
-          url: "#",
-        },
-        {
-          title: "Examples",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "API Reference",
-      url: "#",
-      items: [
-        {
-          title: "Components",
-          url: "#",
-        },
-        {
-          title: "File Conventions",
-          url: "#",
-        },
-        {
-          title: "Functions",
-          url: "#",
-        },
-        {
-          title: "next.config.js Options",
-          url: "#",
-        },
-        {
-          title: "CLI",
-          url: "#",
-        },
-        {
-          title: "Edge Runtime",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Architecture",
-      url: "#",
-      items: [
-        {
-          title: "Accessibility",
-          url: "#",
-        },
-        {
-          title: "Fast Refresh",
-          url: "#",
-        },
-        {
-          title: "Next.js Compiler",
-          url: "#",
-        },
-        {
-          title: "Supported Browsers",
-          url: "#",
-        },
-        {
-          title: "Turbopack",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Community",
-      url: "#",
-      items: [
-        {
-          title: "Contribution Guide",
-          url: "#",
-        },
-      ],
-    },
-  ],
+
+const {
+  navTree,
+  isLoading,
+  contentLoading,
+  error,
+  selectedFile,
+  handleItemClick,
+} = useDocPreview()
+
+// Helper function to check if an item is selected
+const isItemSelected = (item) => {
+  return selectedFile.value && selectedFile.value.path === item.path
+}
+
+// Helper function to get file icon based on file extension
+const getFileIcon = (item) => {
+  if (item.items) return 'i-streamline:folder-add-solid' // Folder icon
+
+  const fileExtension = item.title.split('.').pop().toLowerCase()
+
+  switch (fileExtension) {
+    case 'md':
+      return 'i-streamline:markdown-document-programming-solid'
+    case 'pdf':
+      return 'i-streamline:convert-pdf-2-solid'
+    default:
+      return 'i-streamline:markdown-document-programming-solid' // Default to markdown icon
+  }
 }
 </script>
 
@@ -173,51 +55,37 @@ const data = {
       <SidebarMenu>
         <SidebarMenuItem>
           <SidebarMenuButton size="lg" as-child>
-            <a href="#">
+            <a href="https://github.com/kintong3000/Library">
               <div class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                 <GalleryVerticalEnd class="size-4" />
               </div>
               <div class="flex flex-col gap-0.5 leading-none">
-                <span class="font-semibold">Documentation</span>
-                <span class="">v1.0.0</span>
+                <span class="font-semibold">Library</span>
+<!--                <span class="">v1.0.0</span>-->
               </div>
             </a>
           </SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarMenu>
-      <SearchForm />
     </SidebarHeader>
     <SidebarContent>
       <SidebarGroup>
         <SidebarMenu class="gap-2">
-          <Collapsible
-            v-for="(item, index) in data.navMain"
-            :key="item.title"
-            :default-open="index === 1"
-            class="group/collapsible"
-          >
-            <SidebarMenuItem>
-              <CollapsibleTrigger as-child>
-                <SidebarMenuButton>
-                  {{ item.title }}
-                  <Plus class="ml-auto group-data-[state=open]/collapsible:hidden" />
-                  <Minus class="ml-auto group-data-[state=closed]/collapsible:hidden" />
-                </SidebarMenuButton>
-              </CollapsibleTrigger>
-              <CollapsibleContent v-if="item.items.length">
-                <SidebarMenuSub>
-                  <SidebarMenuSubItem v-for="childItem in item.items" :key="childItem.title">
-                    <SidebarMenuSubButton
-                      as-child
-                      :is-active="childItem.isActive"
-                    >
-                      <a :href="childItem.url">{{ childItem.title }}</a>
-                    </SidebarMenuSubButton>
-                  </SidebarMenuSubItem>
-                </SidebarMenuSub>
-              </CollapsibleContent>
-            </SidebarMenuItem>
-          </Collapsible>
+          <div v-if="isLoading" class="px-4 py-2 text-sm">
+            Loading repository...
+          </div>
+          <div v-else-if="error" class="px-4 py-2 text-sm text-red-500">
+            {{ error }}
+          </div>
+          <template v-else>
+            <NavItem
+              :items="navTree"
+              :level="0"
+              :handleItemClick="handleItemClick"
+              :isItemSelected="isItemSelected"
+              :getFileIcon="getFileIcon"
+            />
+          </template>
         </SidebarMenu>
       </SidebarGroup>
     </SidebarContent>

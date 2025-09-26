@@ -24,7 +24,9 @@
     "vue": "^3.5.21"
   },
   "devDependencies": {
+    "@iconify-json/lucide": "^1.2.68",
     "@iconify-json/material-symbols": "^1.1.72",
+    "@iconify-json/streamline": "^1.2.5",
     "@iconify/json": "^2.2.237",
     "@shikijs/markdown-it": "1.0.0",
     "@types/marked": "^6.0.0",
