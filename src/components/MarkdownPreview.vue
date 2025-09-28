@@ -16,10 +16,6 @@ const error = ref<string | null>(null)
 
 // Configure marked options
 marked.setOptions({
-  highlight: (code, lang) => {
-    // Simple syntax highlighting - you can enhance this with a proper highlighter
-    return `<pre class="language-${lang}"><code>${code}</code></pre>`
-  },
   breaks: true,
   gfm: true
 })
@@ -28,10 +24,10 @@ const renderMarkdown = async (markdownContent: string) => {
   try {
     isLoading.value = true
     error.value = null
-    
+
     // Use marked to convert markdown to HTML
     const html = await marked.parse(markdownContent)
-    
+
     // Sanitize the HTML to prevent XSS attacks
     content.value = DOMPurify.sanitize(html)
   } catch (err) {
@@ -47,12 +43,12 @@ const fetchContent = async () => {
     try {
       isLoading.value = true
       error.value = null
-      
+
       const response = await fetch(props.rawUrl)
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`)
       }
-      
+
       const markdownContent = await response.text()
       await renderMarkdown(markdownContent)
     } catch (err) {
@@ -80,17 +76,17 @@ onMounted(() => {
     <div v-if="isLoading" class="flex items-center justify-center h-full">
       <div class="text-muted-foreground">Loading markdown...</div>
     </div>
-    
+
     <div v-else-if="error" class="flex items-center justify-center h-full">
       <div class="text-destructive">{{ error }}</div>
     </div>
-    
-    <div 
-      v-else-if="content" 
+
+    <div
+      v-else-if="content"
       class="prose prose-coolgray dark:prose-invert max-w-none p-6"
       v-html="content"
     />
-    
+
     <div v-else class="flex items-center justify-center h-full">
       <div class="text-muted-foreground">Select a markdown file to preview</div>
     </div>

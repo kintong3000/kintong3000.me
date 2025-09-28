@@ -12,7 +12,7 @@ const props = defineProps<{
 const checkedItems = ref([])
 
 const router = useRouter()
-const routes: Post[] = router.getRoutes()
+const routes: any[] = router.getRoutes()
     .filter(i => i.path.startsWith('/blogs') && i.meta.frontmatter.date && !i.meta.frontmatter.draft)
     .filter(i => !i.path.endsWith('.html') && (!props.type || (i.meta.frontmatter.type || 'blog').split('+').includes(props.type)))
     .map(i => ({

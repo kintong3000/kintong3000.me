@@ -28,12 +28,12 @@ const {
 } = useDocPreview()
 
 // Helper function to check if an item is selected
-const isItemSelected = (item) => {
+const isItemSelected = (item: any) => {
   return selectedFile.value && selectedFile.value.path === item.path
 }
 
 // Helper function to get file icon based on file extension
-const getFileIcon = (item) => {
+const getFileIcon = (item: any) => {
   if (item.items) return 'i-streamline:folder-add-solid' // Folder icon
 
   const fileExtension = item.title.split('.').pop().toLowerCase()

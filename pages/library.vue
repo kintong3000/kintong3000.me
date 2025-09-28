@@ -225,7 +225,8 @@ function addImageClickListeners() {
     }
     imageObserver = setupLazyLoading()
 
-    images.forEach((img: HTMLImageElement) => {
+    images.forEach((element) => {
+      const img = element as HTMLImageElement
       // Setup lazy loading observation
       if (img.classList.contains('lazy-image')) {
         imageObserver!.observe(img)
@@ -493,6 +494,11 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+/* Import the same markdown styles used in blog pages */
+@import '@/styles/prose.css';
+@import '@/styles/main.css';
+@import '@/styles/markdown.css';
+
 .content-preview {
   height: calc(100vh - 65px); /* Adjust 65px based on your header height */
   overflow-y: auto;
@@ -535,11 +541,6 @@ onUnmounted(() => {
   height: 100%;
   padding: 2rem;
 }
-
-/* Import the same markdown styles used in blog pages */
-@import '@/styles/prose.css';
-@import '@/styles/main.css';
-@import '@/styles/markdown.css';
 
 /* Ensure Shiki code blocks are properly styled */
 .markdown-content :deep(.shiki) {

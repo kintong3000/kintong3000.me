@@ -1,27 +1,27 @@
 import { ref, onMounted } from 'vue'
+// @ts-ignore
 import MarkdownIt from 'markdown-it'
 import Shiki from '@shikijs/markdown-it'
-import GitHubAlerts from 'markdown-it-github-alerts'
 import DOMPurify from 'dompurify'
 
 // This pattern ensures state is created only once and shared across all components.
 // The state is defined outside the composable function.
 
 // --- STATE (SINGLETON) ---
-const navTree = ref([])
-const isLoading = ref(false)
-const contentLoading = ref(false)
-const error = ref(null)
-const selectedFile = ref(null)
-const previewType = ref('')
-const previewContent = ref('')
-const isFetched = ref(false) // Prevents re-fetching on component re-mount
-const currentPdfUrl = ref('') // Track current PDF blob URL for cleanup
+const navTree = ref<any[]>([])
+const isLoading = ref<boolean>(false)
+const contentLoading = ref<boolean>(false)
+const error = ref<string | null>(null)
+const selectedFile = ref<any | null>(null)
+const previewType = ref<string>('')
+const previewContent = ref<string>('')
+const isFetched = ref<boolean>(false) // Prevents re-fetching on component re-mount
+const currentPdfUrl = ref<string>('') // Track current PDF blob URL for cleanup
 
 // --- MARKDOWN CONFIGURATION ---
 let md: MarkdownIt | null = null
 
-async function initMarkdown() {
+async function initMarkdown(): Promise<MarkdownIt> {
   if (md) return md
 
   md = new MarkdownIt({
@@ -31,16 +31,29 @@ async function initMarkdown() {
     quotes: '""\'\'',
   })
 
-  // Configure Shiki for syntax highlighting
-  md.use(await Shiki({
-    themes: {
-      light: 'rose-pine-dawn',
-      dark: 'vitesse-dark',
-    }
-  }))
+  try {
+    // Configure Shiki for syntax highlighting
+    const shikiPlugin = await Shiki({
+      themes: {
+        light: 'rose-pine-dawn',
+        dark: 'vitesse-dark',
+      }
+    })
+    md.use(shikiPlugin)
+  } catch (error) {
+    console.warn('Failed to add Shiki plugin:', error)
+  }
 
-  // Add GitHub alerts support
-  md.use(GitHubAlerts)
+  try {
+    // Try to add GitHub alerts support
+    const GitHubAlerts = await import('markdown-it-github-alerts')
+    const plugin = GitHubAlerts.default || GitHubAlerts
+    if (typeof plugin === 'function') {
+      md.use(plugin)
+    }
+  } catch (error) {
+    console.warn('Failed to add GitHubAlerts plugin:', error)
+  }
 
   return md
 }
@@ -55,7 +68,7 @@ function getGitHubUrl(filePath: string): string {
   const fileExtension = filePath.toLowerCase().split('.').pop()
 
   // Use LFS URL for binary files (images, PDFs, etc.)
-  if (['png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp', 'svg', 'pdf'].includes(fileExtension)) {
+  if (fileExtension && ['png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp', 'svg', 'pdf'].includes(fileExtension)) {
     return `https://media.githubusercontent.com/media/${repoConfig.owner}/${repoConfig.repo}/${repoConfig.branch}/${filePath}`
   } else {
     // Use regular raw URL for text files
@@ -215,7 +228,7 @@ async function loadImageWithCache(src: string): Promise<string> {
   }
 }
 
-function setupLazyLoading() {
+function setupLazyLoading(): IntersectionObserver {
   // Use Intersection Observer for lazy loading
   const imageObserver = new IntersectionObserver((entries) => {
     entries.forEach(async (entry) => {
@@ -270,7 +283,7 @@ const repoConfig = {
   branch: 'main',
 }
 // --- LOGIC ---
-async function fetchAndBuildTree() {
+async function fetchAndBuildTree(): Promise<void> {
   if (isLoading.value) return
   isLoading.value = true
   error.value = null
@@ -285,7 +298,7 @@ async function fetchAndBuildTree() {
     const { tree: flatTree } = await response.json()
 
     const allowedExtensions = ['.md', '.pdf']
-    const relevantFiles = flatTree.filter(item =>
+    const relevantFiles = flatTree.filter((item: any) =>
       item.type === 'blob' && allowedExtensions.some(ext => item.path.toLowerCase().endsWith(ext))
     )
 
@@ -294,13 +307,13 @@ async function fetchAndBuildTree() {
       return
     }
 
-    const tree = []
+    const tree: any[] = []
     for (const file of relevantFiles) {
       // Using filter(Boolean) makes path splitting more robust
       const pathParts = file.path.split('/').filter(Boolean)
       if (pathParts.length === 0) continue
 
-      let currentLevel = tree
+      let currentLevel: any[] = tree
 
       for (let i = 0; i < pathParts.length - 1; i++) {
         const part = pathParts[i]
@@ -315,11 +328,11 @@ async function fetchAndBuildTree() {
       const fileName = pathParts[pathParts.length - 1]
 
       // Determine the correct URL based on file type
-      let downloadUrl
+      let downloadUrl: string
       const fileExtension = fileName.toLowerCase().split('.').pop()
 
       // Use LFS URL for binary files (images, PDFs, etc.)
-      if (['png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp', 'svg', 'pdf'].includes(fileExtension)) {
+      if (fileExtension && ['png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp', 'svg', 'pdf'].includes(fileExtension)) {
         downloadUrl = `https://media.githubusercontent.com/media/${repoConfig.owner}/${repoConfig.repo}/${repoConfig.branch}/${file.path}`
       } else {
         // Use regular raw URL for text files (markdown, etc.)
@@ -337,14 +350,14 @@ async function fetchAndBuildTree() {
         error.value = `Error: Failed to build tree from ${relevantFiles.length} relevant files.`
     }
 
-    function sortTree(nodes) {
+    function sortTree(nodes: any[]): void {
       if (!nodes) return;
-      nodes.sort((a, b) => {
+      nodes.sort((a: any, b: any) => {
         if (a.items && !b.items) return -1
         if (!a.items && b.items) return 1
         return a.title.localeCompare(b.title)
       });
-      nodes.forEach(node => {
+      nodes.forEach((node: any) => {
         if (node.items) sortTree(node.items)
       });
     }
@@ -356,16 +369,16 @@ async function fetchAndBuildTree() {
     // Auto-select README.md if it exists
     autoSelectReadme(tree)
 
-  } catch (e) {
-    console.error(e)
-    error.value = e.message
+  } catch (e: any) {
+    console.error('Error in fetchAndBuildTree:', e)
+    error.value = `Failed to fetch repository data: ${e.message || e}`
   } finally {
     isLoading.value = false
   }
 }
 
 // Function to automatically select README.md
-function autoSelectReadme(tree) {
+function autoSelectReadme(tree: any[]): void {
   // Look for README.md in the root level first
   const readmeFile = findReadmeFile(tree)
 
@@ -376,7 +389,7 @@ function autoSelectReadme(tree) {
 }
 
 // Recursively search for README.md file
-function findReadmeFile(nodes) {
+function findReadmeFile(nodes: any[]): any | null {
   for (const node of nodes) {
     // Check if this is a README.md file (case insensitive)
     if (!node.items && node.title.toLowerCase() === 'readme.md') {
@@ -393,7 +406,7 @@ function findReadmeFile(nodes) {
   return null
 }
 
-async function handleItemClick(item) {
+async function handleItemClick(item: any): Promise<void> {
   if (item.items) return
 
   // Don't reload if the same file is already selected
@@ -408,7 +421,7 @@ async function handleItemClick(item) {
   }
 
   selectedFile.value = item
-  const fileExtension = item.title.split('.').pop().toLowerCase()
+  const fileExtension = item.title.split('.').pop()?.toLowerCase()
 
   try {
     contentLoading.value = true
@@ -416,6 +429,9 @@ async function handleItemClick(item) {
     if (fileExtension === 'md') {
       previewType.value = 'md'
       const res = await fetch(item.download_url)
+      if (!res.ok) {
+        throw new Error(`Failed to fetch file: ${res.status} ${res.statusText}`)
+      }
       let markdownText = await res.text()
 
       // Process relative image paths to absolute GitHub URLs
@@ -460,15 +476,16 @@ async function handleItemClick(item) {
       previewType.value = 'unsupported'
       previewContent.value = ''
     }
-  } catch (e) {
-    error.value = 'Failed to load content.'
+  } catch (e: any) {
+    console.error('Error in handleItemClick:', e)
+    error.value = `Failed to load content: ${e.message || e}`
   } finally {
     contentLoading.value = false
   }
 }
 
 // Clean up function to revoke blob URLs
-function cleanup() {
+function cleanup(): void {
   if (currentPdfUrl.value) {
     URL.revokeObjectURL(currentPdfUrl.value)
     currentPdfUrl.value = ''
